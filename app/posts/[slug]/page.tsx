@@ -8,6 +8,7 @@ import CoverImage from '../../cover-image'
 
 import { Markdown } from '@/lib/markdown'
 import { getAllPosts, getPostAndMorePosts } from '@/lib/api'
+import Avis from '@/components/avis'
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false)
@@ -29,14 +30,15 @@ export default async function PostPage({
     <div className="container mx-auto px-5">
       <h2 className="text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8">
         <Link href="/" className="hover:underline">
-          Blog
+          Le mec rasoir
         </Link>
         .
       </h2>
-      <article>
+      <article className=' mx-auto'>
         <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
           {post.title}
         </h1>
+
         <div className="hidden md:block md:mb-12">
           {post.author && (
             <Avatar name={post.author.name} picture={post.author.picture} />
@@ -55,7 +57,9 @@ export default async function PostPage({
             <Date dateString={post.date} />
           </div>
         </div>
-
+        <div className="max-w-2xl mx-auto">
+          {post.category && <p>{post.category.name}</p>}
+        </div>
         <div className="max-w-2xl mx-auto">
           <div className="prose">
             <Markdown content={post.content} />
@@ -64,6 +68,7 @@ export default async function PostPage({
       </article>
       <hr className="border-accent-2 mt-28 mb-24" />
       <MoreStories morePosts={morePosts} />
+      <Avis />
     </div>
   )
 }

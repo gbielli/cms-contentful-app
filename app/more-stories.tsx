@@ -3,6 +3,12 @@ import Avatar from './avatar'
 import DateComponent from './date'
 import CoverImage from './cover-image'
 
+type Category = {
+  name: string;
+  slug: string;
+
+}
+
 function PostPreview({
   title,
   coverImage,
@@ -10,6 +16,7 @@ function PostPreview({
   excerpt,
   author,
   slug,
+  category,
 }: {
   title: string
   coverImage: any
@@ -17,6 +24,7 @@ function PostPreview({
   excerpt: string
   author: any
   slug: string
+  category: Category
 }) {
   return (
     <div>
@@ -28,9 +36,11 @@ function PostPreview({
           {title}
         </Link>
       </h3>
+      {category && <p className='text-xl bg-red-500'>{category.name}</p>}
       <div className="text-lg mb-4">
         <DateComponent dateString={date} />
       </div>
+
       <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
       {author && <Avatar name={author.name} picture={author.picture} />}
     </div>
@@ -38,23 +48,27 @@ function PostPreview({
 }
 
 export default function MoreStories({ morePosts }: { morePosts: any[] }) {
+
+
   return (
     <section>
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
         More Stories
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
-        {morePosts.map((post) => (
-          <PostPreview
-            key={post.slug}
-            title={post.title}
-            coverImage={post.coverImage}
-            date={post.date}
-            author={post.author}
-            slug={post.slug}
-            excerpt={post.excerpt}
-          />
-        ))}
+        {morePosts.map((post) => {
+        return(
+            <PostPreview
+              key={post.slug}
+              title={post.title}
+              coverImage={post.coverImage}
+              date={post.date}
+              author={post.author}
+              slug={post.slug}
+              excerpt={post.excerpt}
+              category={post.category}
+            />
+          )})}
       </div>
     </section>
   )

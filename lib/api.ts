@@ -11,6 +11,10 @@ const POST_GRAPHQL_FIELDS = `
       url
     }
   }
+  category {
+    name
+    slug
+  }
   excerpt
   content {
     json
@@ -26,6 +30,7 @@ const POST_GRAPHQL_FIELDS = `
       }
     }
   }
+  
 `
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
@@ -67,6 +72,19 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
     true
   )
   return extractPost(entry)
+}
+
+export async function getCategory(): Promise<any> {
+  const entries = await fetchGraphQL(
+    `query {
+      categoryCollection {
+        items {
+          name
+        }
+      }
+    }`
+  )
+  return entries.data.categoryCollection.items
 }
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
@@ -113,6 +131,7 @@ export async function getPostAndMorePosts(
     }`,
     preview
   )
+  
   return {
     post: extractPost(entry),
     morePosts: extractPostEntries(entries),
