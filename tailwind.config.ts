@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      content: {
+        'summary' : 'url("/summary.svg")',
+        
+      },
       fontFamily: {
         sans: ['var(--font-inter)'],
       },

@@ -68,7 +68,6 @@ function HeroPost({
               {title}
             </Link>
           </h3>
-          <h2>{category.name}</h2>
           <div className="mb-4 md:mb-0 text-lg">
             <Date dateString={date} />
           </div>

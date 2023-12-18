@@ -5,6 +5,9 @@ import MoreStories from '../../more-stories'
 import Avatar from '../../avatar'
 import Date from '../../date'
 import CoverImage from '../../cover-image'
+import Stars from '@/components/stars'
+import Logo from '@/public/yoyo.jpeg'
+import Image from 'next/image'
 
 import { Markdown } from '@/lib/markdown'
 import { getAllPosts, getPostAndMorePosts } from '@/lib/api'
@@ -34,20 +37,73 @@ export default async function PostPage({
         </Link>
         .
       </h2>
-      <article className=' mx-auto'>
-        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-tight md:leading-none mb-12 text-center md:text-left">
-          {post.title}
-        </h1>
+      <article className='mx-auto'>
+        <div className='text-center mb-10 flex items-center gap-3 justify-center mx-auto '>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#6B7280" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+</svg>
+    <div>
+        <a className=' text-gray-500' href='/blog'>Retour sur les articles</a>
+    </div>
+        </div>
+        <div className="title max-w-3xl mx-auto">
+      
 
-        <div className="hidden md:block md:mb-12">
+
+        <div className='text-center py-4'>
+        <div className="max-w-2xl mx-auto border inline-block px-3 py-1 rounded-full bg-purple-100 text-purple-500">
+          {post.category && <p>{post.category.name}</p>}
+        </div>
+
+        </div>
+          <h1 className="text-center text-5xl font-bold mb-4">
+            {post.title}
+          </h1>
+          <h2 className='text-xl md:text-xl text-center font-archivo '>Depuis maintenant plusieurs années, La poussette yoyo est un incontournable dans sa catégorie. Mais est-ce que cette poussette répond vraiement à tous les besoins, je l'ai testé pendant 1 mois et je vous dit.</h2>
+
+        </div>
+        
+        <div className='flex justify-center gap-5 mt-10'>
+            <div className='flex gap-3 justify-center items-center mb-5'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              <p className='text-slate-500 text-center  italic'>publié par <span className='font-semibold'>Guillaume</span></p>
+            </div>
+            <div className='flex gap-3 justify-center items-center mb-5'>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-slate-500">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+
+              <p className='text-slate-500 text-center  italic'> mis à jour le 10 decembre 2023</p>
+
+            </div>
+          </div>
+
+
+        {/* <div className="hidden md:block md:mb-12">
           {post.author && (
             <Avatar name={post.author.name} picture={post.author.picture} />
           )}
-        </div>
+        </div> */}
+
+
         <div className="mb-8 md:mb-16 sm:mx-0">
           <CoverImage title={post.title} url={post.coverImage.url} />
         </div>
-        <div className="max-w-2xl mx-auto">
+        <div className='max-w-2xl mx-auto border p-4 rounded-md flex items-center gap-3 my-10'>
+          <Image src={Logo} width={180} alt='poussette yoyo' />
+          <div className=''>
+            <h3 className='text-3xl mb-2'>Ma note pour la Poussette Yoyo</h3>
+            <div className='flex gap-3 items-center text-xl'>
+              <Stars number={3} total={5} />
+              <p> 3 / 5 </p>  
+            </div>
+          </div>
+
+
+        </div>
+        {/* <div className="max-w-2xl mx-auto">
           <div className="block md:hidden mb-6">
             {post.author && (
               <Avatar name={post.author.name} picture={post.author.picture} />
@@ -56,19 +112,17 @@ export default async function PostPage({
           <div className="mb-6 text-lg">
             <Date dateString={post.date} />
           </div>
-        </div>
-        <div className="max-w-2xl mx-auto">
-          {post.category && <p>{post.category.name}</p>}
-        </div>
+        </div> */}
         <div className="max-w-2xl mx-auto">
           <div className="prose">
             <Markdown content={post.content} />
           </div>
         </div>
+        <Avis />
+
       </article>
       <hr className="border-accent-2 mt-28 mb-24" />
       <MoreStories morePosts={morePosts} />
-      <Avis />
     </div>
   )
 }

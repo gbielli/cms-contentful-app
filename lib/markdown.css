@@ -1,0 +1,8 @@
+
+.with-before::before {
+    content: '#'; /* Your content here */
+    color: #0068ad; /* Your desired text color (blue in this case) */
+    margin-right: 0.5rem;
+    font-weight: bold; /* Adjust spacing as needed */
+  }
+  

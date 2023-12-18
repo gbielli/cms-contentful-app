@@ -16,6 +16,10 @@ module.exports = {
       },
     },
     extend: {
+      content: {
+        'summary' : 'url("/summary.svg")',
+        
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
