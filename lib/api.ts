@@ -5,6 +5,7 @@ const POST_GRAPHQL_FIELDS = `
     url
   }
   date
+  stars
   author {
     name
     picture {
@@ -14,6 +15,11 @@ const POST_GRAPHQL_FIELDS = `
   category {
     name
     slug
+  }
+  avantages {
+    title
+    like
+    dislike
   }
   excerpt
   content {
@@ -71,7 +77,12 @@ export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
     }`,
     true
   )
+  
+
   return extractPost(entry)
+
+
+
 }
 
 export async function getCategory(): Promise<any> {

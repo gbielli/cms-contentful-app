@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import '/lib/markdown.css'
-import Summary from '@/public/summary.svg'
+import Summary from '@/public/images/summary.svg'
 import { useEffect } from 'react'
 
 interface Asset {
@@ -48,6 +48,17 @@ function RichTextAsset({
   return null
 }
 
+
+const slugify = (str : string) => {
+  return  str
+  .toString()
+  .toLowerCase()
+  .trim()
+  .replace(/[^\w\s-]/g, '')
+  .replace(/[\s_-]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+}
+
 export function Markdown({ content }: { content: Content}) {
 
 
@@ -64,17 +75,15 @@ const summary = retrieveValues(content.json.content)
 
 
 
-
-
   return (
     <div>
-      <div className='border p-4'>
+      <div className='border p-6 rounded-md'>
         <h3 className='text-2xl mb-3'>Sommaire</h3>
      {summary.map((item, index) => { 
       return (
       <div key={index} className='flex gap-2 mb-2'>
         <Image src={Summary} width={24} alt='summary' />
-        <p>{item}</p>
+        <a className='hover:underline' href={`#${slugify(item)}`}>{item}</a>
       </div>
      )})}
 
@@ -89,7 +98,10 @@ const summary = retrieveValues(content.json.content)
         />
       ),
       [BLOCKS.HEADING_2]: (node: any, children: any) => (
-        <h2 className="text-3xl py-10 font-semibold with-before">{children}</h2>
+        <h2 className="text-4xl py-10 font-semibold with-before" id={slugify(children)}>{children}</h2>
+      ),
+      [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
+        <p className="text-xl">{children}</p>
       ),
       
     },

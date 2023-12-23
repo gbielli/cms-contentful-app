@@ -29,7 +29,7 @@ function PostPreview({
   return (
     <div>
       <div className="mb-5">
-        <CoverImage title={title} slug={slug} url={coverImage.url} />
+        <CoverImage title={title} slug={slug} url={coverImage.url} width={1200} height={800} />
       </div>
       <h3 className="text-3xl mb-3 leading-snug">
         <Link href={`/posts/${slug}`} className="hover:underline">
@@ -55,7 +55,7 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
       <h2 className="mb-8 text-6xl md:text-7xl font-bold tracking-tighter leading-tight">
         More Stories
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {morePosts.map((post) => {
         return(
             <PostPreview

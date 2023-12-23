@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { EXAMPLE_PATH, CMS_NAME } from '@/lib/constants'
+import localFont from 'next/font/local';
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
@@ -11,6 +12,24 @@ const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
   display: 'swap',
+})
+
+const cabinet = localFont({
+  src: [
+    {
+      path: '../public/fonts/cabinetgrotesk-bold.woff2',
+    },
+  ],
+  variable: '--font-cabinet'
+})
+
+const synonym = localFont({
+  src: [
+    {
+      path: '../public/fonts/synonym-Variable.woff2',
+    },
+  ],
+  variable: '--font-synonym'
 })
 
 function Footer() {
@@ -47,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={inter.variable}>
+    <html lang="fr" className={`${inter.variable} ${cabinet.variable} ${synonym.variable} scroll-smooth`}>
       <body>
         <section className="min-h-screen">
           <main>{children}</main>

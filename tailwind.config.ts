@@ -15,6 +15,8 @@ export default {
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
+        cabinet: ['var(--font-cabinet)'],
+        synonym: ['var(--font-synonym)']
       },
     },
   },
