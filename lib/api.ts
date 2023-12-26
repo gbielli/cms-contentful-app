@@ -6,6 +6,9 @@ const POST_GRAPHQL_FIELDS = `
   }
   date
   stars
+  productImage {
+    url
+  }
   author {
     name
     picture {

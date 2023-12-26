@@ -3,7 +3,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { BLOCKS } from '@contentful/rich-text-types'
 import '/lib/markdown.css'
 import Summary from '@/public/images/summary.svg'
-import { useEffect } from 'react'
+
 
 interface Asset {
   sys: {
@@ -98,10 +98,10 @@ const summary = retrieveValues(content.json.content)
         />
       ),
       [BLOCKS.HEADING_2]: (node: any, children: any) => (
-        <h2 className="text-4xl py-10 font-semibold with-before" id={slugify(children)}>{children}</h2>
+        <h2 className="text-4xl py-6 font-semibold with-before" id={slugify(children)}>{children}</h2>
       ),
       [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-        <p className="text-xl">{children}</p>
+        <p className="text-xl py-3">{children}</p>
       ),
       
     },

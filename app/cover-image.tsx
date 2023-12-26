@@ -15,12 +15,12 @@ export default function CoverImage({
   title: string
   url: string
   slug?: string
-  height: number | null
+  height: number
   width: number
 }) {
   const image = (
     <ContentfulImage
-      alt={`Cover Image for ${title}`}
+      alt={`${title}`}
       priority
       width={width}
       height={height}

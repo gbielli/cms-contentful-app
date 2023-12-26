@@ -14,8 +14,8 @@ export default {
         
       },
       fontFamily: {
-        sans: ['var(--font-inter)'],
-        cabinet: ['var(--font-cabinet)'],
+        roundo: ['var(--font-roundo)'],
+        manrope: ['var(--font-manrope)'],
         synonym: ['var(--font-synonym)']
       },
     },

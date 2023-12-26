@@ -8,19 +8,22 @@ export const metadata = {
   description: `This is a blog built with Next.js and ${CMS_NAME}.`,
 }
 
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const cabinet = localFont({
+const roundo = localFont({
   src: [
     {
-      path: '../public/fonts/cabinetgrotesk-bold.woff2',
+      path:'../public/fonts/roundo-variable.woff2'
+    }
+  ],
+  variable: '--font-roundo'
+})
+
+const manrope = localFont({
+  src: [
+    {
+      path: '../public/fonts/manrope-variable.woff2',
     },
   ],
-  variable: '--font-cabinet'
+  variable: '--font-manrope'
 })
 
 const synonym = localFont({
@@ -66,8 +69,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="fr" className={`${inter.variable} ${cabinet.variable} ${synonym.variable} scroll-smooth`}>
-      <body>
+    <html lang="fr" className={`${roundo.variable} ${manrope.variable} ${synonym.variable} scroll-smooth`}>
+      <body className='bg-slate-100'>
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />

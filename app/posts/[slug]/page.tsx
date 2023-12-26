@@ -8,6 +8,7 @@ import CoverImage from '../../cover-image'
 import Stars from '@/components/stars'
 import Logo from '@/public/images/yoyo.jpeg'
 import Image from 'next/image'
+import Avantages from '@/components/stars'
 
 import { Markdown } from '@/lib/markdown'
 import { getAllPosts, getPostAndMorePosts } from '@/lib/api'
@@ -91,32 +92,13 @@ export default async function PostPage({
         </div> */}
 
 
-        <div className="mb-8 md:mb-16 sm:mx-0">
+        <div className="mb-8 md:mb-16 sm:mx-0 ">
           <CoverImage title={post.title} url={post.coverImage.url} width={800} height={800} />
         </div>
-        <div className='max-w-2xl mx-auto border p-4 rounded-md flex items-center gap-3 my-10'>
-          <Image src={Logo} width={180} alt='poussette yoyo' />
-          <div className=''>
-            <h3 className='text-3xl mb-2'>Ma note pour la Poussette Yoyo</h3>
-            <div className='flex gap-3 items-center text-xl'>
-              <Stars number={post.stars} total={5} />
-              <p> {post.stars} / 5 </p>  
-            </div>
-          </div>
-
-
-        </div>
-        {/* <div className="max-w-2xl mx-auto">
-          <div className="block md:hidden mb-6">
-            {post.author && (
-              <Avatar name={post.author.name} picture={post.author.picture} />
-            )}
-          </div>
-          <div className="mb-6 text-lg">
-            <Date dateString={post.date} />
-          </div>
-        </div> */}
-        <div className="max-w-2xl mx-auto">
+        
+        <Avantages post={post} />
+      
+        <div className="max-w-3xl mx-auto ">
           <div className="prose">
             <Markdown content={post.content} />
           </div>

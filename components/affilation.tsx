@@ -9,7 +9,7 @@ const Affilation = () => {
         <div className='max-w-2xl mx-auto mb-5'>
             <h2 className='text-2xl mb-5 font-semibold'>Les offres de la poussette Babyzen YOYO</h2>
             <div className='bg-blue-100 p-3 rounded-md'>
-            <p className='text-blue-500'>🙏 En passant par ses liens, vous soutenez directement mon contenu</p>
+            <p className='text-blue-500'>🙏 En passant par ces liens, vous soutenez directement mon contenu</p>
             </div>
         </div>
         <div className="affilate max-w-2xl mx-auto">

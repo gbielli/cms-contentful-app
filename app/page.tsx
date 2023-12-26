@@ -9,17 +9,27 @@ import { getAllPosts, getCategory } from '@/lib/api'
 import NavigationItems from '@/components/naviguation-items'
 import Header from '@/components/header';
 import Category from '@/components/category';
+import Image from 'next/image'
 
 function Intro() {
 
 
   return (
-    <section className="flex-col md:flex-row flex items-center md:justify-between mt-5 pb-5 md:mb-12">
-      <h1 className="text-4xl font-bold font-chillax md:pr-8">
+    <section className="flex-col md:flex-row flex items-center md:justify-between mt-10 py-5 px-8">
+      <div className='flex gap-2 items-center'>
+      <Image src="/images/icon.png" alt='le mec rasoir' width={32} height={32} />
+      <h1 className="text-2xl font-roundo font-medium md:pr-8">
         Le mec rasoir
       </h1>
-      <div className='flex gap-12'>
-        <NavigationItems />
+      </div>
+      <div className='flex gap-12 w-32'>
+      <div className='p-0.5 h-12 w-full rounded-full bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 '>
+        <div className='h-full w-full bg-slate-100 rounded-full flex justify-center items-center'>
+          <a href="">Menu</a>
+        </div>
+        
+        
+      </div>
       </div>
     </section>
   )
@@ -97,9 +107,6 @@ export default async function Page() {
           category={heroPost.category}
         />
       )}
-      <div>
-        <h3 className='text-6xl font-bold'>Mes derniers articles</h3>
-      </div>
       <MoreStories morePosts={morePosts} />
     </div>
   )

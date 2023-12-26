@@ -20,22 +20,6 @@ const items = [
             {title:'Après rasage', href:'/'},
         ]
     },
-    {
-        name: 'Comparatif',
-        submenu: [
-            {title:'Les meilleurs rasoirs', href:'/'},
-            {title:'Les meilleurs savon à raser', href:'/'},
-            {title:'Les meilleurs Après rasage', href:'/'},
-        ]
-    },
-    {
-        name: 'Articles',
-        submenu: [
-            {title:'Rasoirs', href:'/'},
-            {title:'Savon à raser', href:'/'},
-            {title:'Après rasage', href:'/'},
-        ]
-    }
 
 ]
 

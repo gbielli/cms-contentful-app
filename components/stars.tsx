@@ -1,4 +1,20 @@
 import React from 'react'
+import CoverImage from '@/app/cover-image'
+
+type avantagesProps = {
+    post: {
+        productImage: 
+        {
+            url: string
+        },
+        stars: number
+        avantages: {
+            title: string
+        }
+    }
+}
+
+
 
 const Stars = ({ number, total }: { number: number, total: number }) => {
 
@@ -29,4 +45,18 @@ const Stars = ({ number, total }: { number: number, total: number }) => {
     )
 }
 
-export default Stars
+export default function Avantages({post} : avantagesProps) {
+   return (
+   <div className='max-w-3xl mx-auto border p-4 rounded-md flex items-center gap-3 my-10 bg-white'>
+    {post.productImage && <CoverImage url={post.productImage.url} width={180} height={180} title='poussette yoyo' /> }
+        <div className=''>
+      <h3 className='text-3xl mb-2'>Note pour {post.avantages.title}</h3>
+      <div className='flex gap-3 items-center text-xl'>
+        <Stars number={post.stars} total={5} />
+        <p> {post.stars} / 5 </p>  
+      </div>
+    </div>
+  </div>
+  )
+    
+}
