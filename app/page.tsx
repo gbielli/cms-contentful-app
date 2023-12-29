@@ -10,6 +10,7 @@ import NavigationItems from '@/components/naviguation-items'
 import Header from '@/components/header';
 import Category from '@/components/category';
 import Image from 'next/image'
+import Accordeon from '@/components/accordeon'
 
 function Intro() {
 
@@ -66,7 +67,7 @@ function HeroPost({
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">
         <div>
           <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">
-            <Link href={`/posts/${slug}`} className="hover:underline">
+            <Link href={`/articles/${slug}`} className="hover:underline">
               {title}
             </Link>
           </h3>
@@ -87,7 +88,7 @@ export default async function Page() {
   const { isEnabled } = draftMode()
   const allPosts = await getAllPosts(isEnabled)
   const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
+  const morePosts = allPosts.slice(1, 4)
   const category = await getCategory();
 
 
@@ -96,7 +97,7 @@ export default async function Page() {
       <Intro />
       <Header />
       <Category categoryList={category} />
-      {heroPost && (
+      {/* {heroPost && (
         <HeroPost
           title={heroPost.title}
           coverImage={heroPost.coverImage}
@@ -106,8 +107,17 @@ export default async function Page() {
           excerpt={heroPost.excerpt}
           category={heroPost.category}
         />
-      )}
+      )} */}
       <MoreStories morePosts={morePosts} />
+      <div className='flex'>
+        <div className='flex-1'>
+
+        </div>
+        <div className='flex-1'>
+      <Accordeon />
+
+        </div>
+      </div>
     </div>
   )
 }

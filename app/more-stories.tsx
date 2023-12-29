@@ -3,6 +3,7 @@ import Avatar from './avatar'
 import DateComponent from './date'
 import CoverImage from './cover-image'
 import { Divide } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 type Category = {
   name: string;
@@ -26,25 +27,36 @@ function PostPreview({
   author: any
   slug: string
   category: Category
-}) {
+})
+
+{
+
+  const reduceExcerpt = (text:string, n:number) : string => {
+    if (text.length <= n) {
+      return text;
+    } else {
+      return text.slice(0, n) + '...';
+    }
+  }
+
+
   return (
     <div>
       <div className="mb-5">
         <CoverImage title={title} slug={slug} url={coverImage.url} width={1200} height={800} />
       </div>
       <h3 className="text-2xl leading-snug font-medium">
-        <Link href={`/posts/${slug}`} className="hover:underline">
+        <Link href={`/articles/${slug}`} className="hover:underline">
           {title}
         </Link>
       </h3>
       <div className="text-lg">
       </div>
-      <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+      <p className="text-lg leading-relaxed mb-4">{reduceExcerpt(excerpt, 150)}</p>
       {category && 
       <div className=''>
         <p className='border border-black px-3 py-1 rounded-full inline'>{category.name}</p>
       </div> }
-      {author && <Avatar name={author.name} picture={author.picture} />}
     </div>
     
   )
@@ -54,7 +66,7 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
 
 
   return (
-    <section>
+    <section className='pb-20'>
       <h2 className="mb-8 text-6xl md:text-4xl font-bold tracking-tighter leading-tight">
         Mes derniers articles
       </h2>
@@ -72,6 +84,9 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
               category={post.category}
             />
           )})}
+      </div>
+      <div className='text-center py-10'>
+        <Button size="lg">Voir tous les articles</Button>
       </div>
     </section>
   )

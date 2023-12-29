@@ -13,7 +13,7 @@ const Header = () => {
         <p className='text-xl font-chillax'>Tu as le crâne rasé (ou presque) ? je te donne tous mes conseils, mes avis et mes tests sur les produits pour faire briller ton crâne comme jamais !</p>
         </div>
         <div className='flex gap-5 justify-center mt-5'>
-        <Button size='lg'>Voir les articles</Button>
+        <Button size='lg' > <a href="/articles">Voir les articles</a></Button>
         <Button size='lg' variant='outline'>Me contacter</Button>
           
         </div>
