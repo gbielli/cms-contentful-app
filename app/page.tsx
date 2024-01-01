@@ -11,6 +11,8 @@ import Header from '@/components/header';
 import Category from '@/components/category';
 import Image from 'next/image'
 import Accordeon from '@/components/accordeon'
+import Hero from './hero';
+import { CheckCircleIcon } from 'lucide-react'
 
 function Intro() {
 
@@ -96,7 +98,27 @@ export default async function Page() {
     <div className="container mx-auto px-5">
       <Intro />
       <Header />
-      <Category categoryList={category} />
+      <div className='flex gap-20 justify-center my-3'>
+        <div className='flex items-center gap-2'>
+        <Image src="/images/check-gradient.svg" width={40} height={40} alt='check-gradient'  />
+        <p className='text-lg'>Non sponsorisé</p>
+        </div>
+        <div className='flex items-center gap-2'>
+        <Image src="/images/check-gradient.svg" width={40} height={40} alt='check-gradient'  />
+        <p className='text-lg'>Produits testés</p>
+        </div>
+        <div className='flex gap-2 items-center justify-center my-3'>
+        <Image src="/images/check-gradient.svg" width={40} height={40} alt='check-gradient'  />
+        <p className='text-lg'>Liens d'affiliation</p>
+        </div>
+
+        <div className='flex gap-2 items-center justify-center my-3'>
+        <Image src="/images/check-gradient.svg" width={40} height={40} alt='check-gradient'  />
+        <p className='text-lg'>Transparence</p>
+        </div>
+      </div>
+
+      <Hero />
       {/* {heroPost && (
         <HeroPost
           title={heroPost.title}
@@ -109,6 +131,7 @@ export default async function Page() {
         />
       )} */}
       <MoreStories morePosts={morePosts} />
+      <Category categoryList={category} />
       <div className='flex'>
         <div className='flex-1'>
 

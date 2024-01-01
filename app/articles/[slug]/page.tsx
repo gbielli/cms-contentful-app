@@ -23,6 +23,22 @@ export async function generateStaticParams() {
   }))
 }
 
+
+export async function generateMetadata({params} : {params : {slug :string}}) {
+  const { isEnabled } = draftMode()
+  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled)
+
+  return {
+    metadataBase: new URL('http://localhost:3000/articles'),
+    title:post.title,
+    description:post.excerpt,
+    alternates: {
+      canonical: `/${post.slug}`
+    }
+  }
+
+}
+
 export default async function PostPage({
   params,
 }: {
