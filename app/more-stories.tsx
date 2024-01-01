@@ -30,7 +30,8 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
             />
           )})}
       </div>
-      <div className='text-center py-10'>
+      <div className='text-center py-12'>
+        <Link href="http://localhost:3000/articles?categorie=comparatifs">adb</Link>
         <Button size="lg">Voir tous les articles</Button>
       </div>
     </section>

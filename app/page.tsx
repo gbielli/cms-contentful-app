@@ -131,16 +131,7 @@ export default async function Page() {
         />
       )} */}
       <MoreStories morePosts={morePosts} />
-      <Category categoryList={category} />
-      <div className='flex'>
-        <div className='flex-1'>
-
-        </div>
-        <div className='flex-1'>
-      <Accordeon />
-
-        </div>
-      </div>
+      {/* <Category categoryList={category} /> */}
     </div>
   )
 }
