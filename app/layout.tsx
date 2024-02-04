@@ -1,39 +1,38 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import { EXAMPLE_PATH, CMS_NAME } from '@/lib/constants'
-import localFont from 'next/font/local';
+import { CMS_NAME, EXAMPLE_PATH } from "@/lib/constants";
+import localFont from "next/font/local";
+import "./globals.css";
 
 export const metadata = {
   title: `Next.js and ${CMS_NAME} Example`,
   description: `This is a blog built with Next.js and ${CMS_NAME}.`,
-}
+};
 
 const roundo = localFont({
   src: [
     {
-      path:'../public/fonts/roundo-variable.woff2'
-    }
+      path: "../public/fonts/roundo-variable.woff2",
+    },
   ],
-  variable: '--font-roundo'
-})
+  variable: "--font-roundo",
+});
 
 const manrope = localFont({
   src: [
     {
-      path: '../public/fonts/manrope-variable.woff2',
+      path: "../public/fonts/manrope-variable.woff2",
     },
   ],
-  variable: '--font-manrope'
-})
+  variable: "--font-manrope",
+});
 
 const synonym = localFont({
   src: [
     {
-      path: '../public/fonts/synonym-Variable.woff2',
+      path: "../public/fonts/synonym-Variable.woff2",
     },
   ],
-  variable: '--font-synonym'
-})
+  variable: "--font-synonym",
+});
 
 function Footer() {
   return (
@@ -60,22 +59,25 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className={`${roundo.variable} ${manrope.variable} ${synonym.variable} scroll-smooth`}>
-      <body className='bg-slate-100'>
+    <html
+      lang="fr"
+      className={`${roundo.variable} ${manrope.variable} ${synonym.variable} scroll-smooth`}
+    >
+      <body className="bg-[#faf8f2]">
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />
         </section>
       </body>
     </html>
-  )
+  );
 }
