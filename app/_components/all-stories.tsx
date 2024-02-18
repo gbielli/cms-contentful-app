@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import PostPreview from "./post-preview";
+import PostPreview from "../app/post-preview";
 
 type Category = {
   name: string;

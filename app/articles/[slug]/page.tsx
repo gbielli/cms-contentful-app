@@ -1,12 +1,11 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
-import Avantages from "@/components/stars";
-import CoverImage from "../../cover-image";
-import MoreStories from "../../more-stories";
+import Avantages from "@/app/_components/_articles/productOverview";
+import CoverImage from "@/app/_components/cover-image";
+import MoreStories from "@/app/_components/more-stories";
 
-import Affilation from "@/components/affilation";
-import Avis from "@/components/avis";
+import Affilation from "@/app/_components/affilation";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
 
@@ -104,7 +103,7 @@ export default async function PostPage({
                 {post.category && <p>{post.category.name}</p>}
               </div>
             </div>
-            <h1 className="text-center text-5xl font-bold mb-4">
+            <h1 className="text-center text-5xl font-semibold mb-4">
               {post.title}
             </h1>
             <p className="text-xl md:text-xl text-center font-archivo ">
@@ -181,9 +180,7 @@ export default async function PostPage({
             </div>
           </div>
 
-          <Avis avis={post.avantages} />
-
-          <Affilation />
+          <Affilation post={post} />
         </article>
         <hr className="border-accent-2 mt-28 mb-24" />
         <MoreStories morePosts={morePosts} />

@@ -1,15 +1,17 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
-import Header from "@/components/header";
+import Header from "@/app/_components/_homepage/header";
+import { Button } from "@/app/_components/_ui/button";
+import { Input } from "@/app/_components/_ui/input";
 import { getAllPosts, getCategory } from "@/lib/api";
-import { CheckCircle2 } from "lucide-react";
-import Avatar from "./avatar";
-import { CarouselSize } from "./carrouselSize";
-import Cat from "./cat";
-import CoverImage from "./cover-image";
-import Date from "./date";
-import MoreStories from "./more-stories";
+import { ArrowRightIcon, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+import { CarouselSize } from "./_components/_homepage/carrouselSize";
+import Avatar from "./_components/avatar";
+import Cat from "./_components/cat";
+import CoverImage from "./_components/cover-image";
+import Date from "./_components/date";
 
 function Intro() {
   return (
@@ -20,12 +22,8 @@ function Intro() {
           Le mec rasoir
         </h1>
       </div>
-      <div className="flex gap-12 w-32">
-        <div className="p-0.5 h-12 w-full rounded-full">
-          <div className="h-full w-full bg-slate-100 rounded-full flex justify-center items-center">
-            <a href="">Menu</a>
-          </div>
-        </div>
+      <div className="rounded-full bg-black w-16 h-16 flex justify-center items-center">
+        <Image src="/images/bars.svg" width={40} height={40} alt="bars" />
       </div>
     </section>
   );
@@ -92,7 +90,7 @@ export default async function Page() {
   const { isEnabled } = draftMode();
   const allPosts = await getAllPosts(isEnabled);
   const heroPost = allPosts[0];
-  const morePosts = allPosts.slice(1, 4);
+  const morePosts = allPosts.slice(1, 6);
   const category = await getCategory();
 
   return (
@@ -105,7 +103,7 @@ export default async function Page() {
             width={35}
             height={35}
             strokeWidth={1.3}
-            fill={"#7c80d9"}
+            className="fill-primary text-white"
           />
           <p className="text-lg">Non sponsorisé</p>
         </div>
@@ -114,7 +112,7 @@ export default async function Page() {
             width={35}
             height={35}
             strokeWidth={1.2}
-            fill={"#7c80d9"}
+            className="fill-primary text-white"
           />
           <p className="text-lg">Produits testés</p>
         </div>
@@ -123,17 +121,16 @@ export default async function Page() {
             width={35}
             height={35}
             strokeWidth={1.3}
-            fill={"#7c80d9"}
+            className="fill-primary text-white"
           />
           <p className="text-lg">Liens d'affiliation</p>
         </div>
-
         <div className="flex gap-2 items-center justify-center my-3">
           <CheckCircle2
             width={35}
             height={35}
             strokeWidth={1.3}
-            fill={"#7c80d9"}
+            className="fill-primary text-white"
           />
           <p className="text-lg">Transparence</p>
         </div>
@@ -141,24 +138,29 @@ export default async function Page() {
       <div>
         <Cat />
       </div>
-      <div className="mx-auto py-20">
-        <CarouselSize />
+      <div className="h-[300px] w-full my-20">
+        <div className="bg-[url('/images/pattern.jpg')] h-full w-full rounded-2xl object-cover">
+          <div className="w-full h-full flex flex-col gap-10 justify-center items-center">
+            <h3 className="text-4xl text-white font-medium">
+              Rejoignez ma newsletter pour ne rien manquer
+            </h3>
+            <div className="inline-flex w-1/3 gap-4">
+              <Input
+                className="h-12 w-full focus-visible:ring-blue-700 ring-offset-blue-700"
+                type="email"
+                placeholder="Email"
+              />
+              <Button className="h-12 rounded-lg">
+                Je m'inscris
+                <ArrowRightIcon className="ml-3 h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* <Hero /> */}
-      {/* {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          date={heroPost.date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-          category={heroPost.category}
-        />
-      )} */}
-      <MoreStories morePosts={morePosts} />
-      {/* <Category categoryList={category} /> */}
+      <div className="mx-auto py-20">
+        <CarouselSize morePosts={morePosts} />
+      </div>
     </div>
   );
 }

@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -17,8 +17,10 @@ module.exports = {
     },
     extend: {
       content: {
-        'summary' : 'url("/summary.svg")',
-        
+        summary: 'url("/summary.svg")',
+      },
+      backgroundImage: {
+        "hero-pattern": "url('/images/gradient.jpg')",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -77,4 +79,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

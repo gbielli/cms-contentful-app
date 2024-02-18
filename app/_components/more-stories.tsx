@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/_components/_ui/button";
 import PostPreview from "./post-preview";
 
 export default function MoreStories({ morePosts }: { morePosts: any[] }) {
@@ -9,7 +9,7 @@ export default function MoreStories({ morePosts }: { morePosts: any[] }) {
         {morePosts.map((post) => {
           return (
             <PostPreview
-              key={post.slug}
+              key={`${post.slug}`}
               title={post.title}
               coverImage={post.coverImage}
               date={post.date}

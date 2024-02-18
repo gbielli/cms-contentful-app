@@ -1,8 +1,8 @@
-import ContentfulImage from '../lib/contentful-image'
-import Link from 'next/link'
+import Link from "next/link";
+import ContentfulImage from "../../lib/contentful-image";
 
 function cn(...classes: any[]) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 export default function CoverImage({
@@ -10,13 +10,13 @@ export default function CoverImage({
   url,
   slug,
   width,
-  height
+  height,
 }: {
-  title: string
-  url: string
-  slug?: string
-  height: number
-  width: number
+  title: string;
+  url: string;
+  slug?: string;
+  height: number;
+  width: number;
 }) {
   const image = (
     <ContentfulImage
@@ -24,12 +24,12 @@ export default function CoverImage({
       priority
       width={width}
       height={height}
-      className={cn('shadow-small mx-auto', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
+      className={cn("shadow-small mx-auto", {
+        "hover:shadow-medium transition-shadow duration-200": slug,
       })}
       src={url}
     />
-  )
+  );
 
   return (
     <div className="sm:mx-0">
@@ -41,5 +41,5 @@ export default function CoverImage({
         image
       )}
     </div>
-  )
+  );
 }

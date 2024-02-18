@@ -72,7 +72,7 @@ export default function RootLayout({
       lang="fr"
       className={`${roundo.variable} ${manrope.variable} ${synonym.variable} scroll-smooth`}
     >
-      <body className="bg-[#faf8f2]">
+      <body className="bg-[#f9f9f9]">
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />
