@@ -1,8 +1,8 @@
 "use client";
 
+import PostPreview from "@/app/_components/post-preview";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import PostPreview from "../app/post-preview";
 
 type Category = {
   name: string;

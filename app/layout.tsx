@@ -10,7 +10,7 @@ export const metadata = {
 const roundo = localFont({
   src: [
     {
-      path: "../public/fonts/roundo-variable.woff2",
+      path: "../public/fonts/Roundo-Variable.woff2",
     },
   ],
   variable: "--font-roundo",
@@ -19,7 +19,7 @@ const roundo = localFont({
 const manrope = localFont({
   src: [
     {
-      path: "../public/fonts/manrope-variable.woff2",
+      path: "../public/fonts/Manrope-Variable.woff2",
     },
   ],
   variable: "--font-manrope",
