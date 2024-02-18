@@ -5,34 +5,37 @@ import Avantages from "@/app/_components/_articles/productOverview";
 import CoverImage from "@/app/_components/cover-image";
 
 import Affilation from "@/app/_components/affilation";
+import MoreStories from "@/app/_components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
 
+  console.log(allPosts);
+
   return allPosts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-// export async function generateMetadata({
-//   params,
-// }: {
-//   params: { slug: string };
-// }) {
-//   const { isEnabled } = draftMode();
-//   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { isEnabled } = draftMode();
+  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
 
-//   return {
-//     metadataBase: new URL("http://localhost:3000/articles"),
-//     title: post.title,
-//     description: post.excerpt,
-//     alternates: {
-//       canonical: `/${post.slug}`,
-//     },
-//   };
-// }
+  return {
+    metadataBase: new URL("http://localhost:3000/articles"),
+    title: post.title,
+    description: post.excerpt,
+    alternates: {
+      canonical: `/${post.slug}`,
+    },
+  };
+}
 
 export default async function PostPage({
   params,
@@ -182,7 +185,7 @@ export default async function PostPage({
           <Affilation post={post} />
         </article>
         <hr className="border-accent-2 mt-28 mb-24" />
-        {/* <MoreStories morePosts={morePosts} /> */}
+        <MoreStories morePosts={morePosts} />
       </div>
     </>
   );
