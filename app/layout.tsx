@@ -25,15 +25,6 @@ const manrope = localFont({
   variable: "--font-manrope",
 });
 
-const synonym = localFont({
-  src: [
-    {
-      path: "../public/fonts/synonym-Variable.woff2",
-    },
-  ],
-  variable: "--font-synonym",
-});
-
 function Footer() {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
