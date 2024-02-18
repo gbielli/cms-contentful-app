@@ -3,7 +3,6 @@ import Link from "next/link";
 
 import Avantages from "@/app/_components/_articles/productOverview";
 import CoverImage from "@/app/_components/cover-image";
-import MoreStories from "@/app/_components/more-stories";
 
 import Affilation from "@/app/_components/affilation";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
@@ -183,7 +182,7 @@ export default async function PostPage({
           <Affilation post={post} />
         </article>
         <hr className="border-accent-2 mt-28 mb-24" />
-        <MoreStories morePosts={morePosts} />
+        {/* <MoreStories morePosts={morePosts} /> */}
       </div>
     </>
   );
