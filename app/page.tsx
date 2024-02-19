@@ -1,17 +1,18 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
-import Header from "@/app/_components/_homepage/header";
-import { Button } from "@/app/_components/_ui/button";
-import { Input } from "@/app/_components/_ui/input";
+import Header from "@/app/components/homepage/header";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
 import { getAllPosts, getCategory } from "@/lib/api";
 import { ArrowRightIcon, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import { CarouselSize } from "./_components/_homepage/carrouselSize";
-import Avatar from "./_components/avatar";
-import Cat from "./_components/cat";
-import CoverImage from "./_components/cover-image";
-import Date from "./_components/date";
+import Avatar from "./components/avatar";
+import Cat from "./components/cat";
+import CoverImage from "./components/cover-image";
+import Date from "./components/date";
+import Form from "./components/form/form";
+import { CarouselSize } from "./components/homepage/carrouselSize";
 
 function Intro() {
   return (
@@ -97,6 +98,7 @@ export default async function Page() {
     <div className=" mx-auto px-5">
       <Intro />
       <Header />
+      <Form />
       <div className="flex gap-20 justify-center my-3 py-20">
         <div className="flex items-center gap-2">
           <CheckCircle2
@@ -138,26 +140,7 @@ export default async function Page() {
       <div>
         <Cat />
       </div>
-      <div className="h-[300px] w-full my-20">
-        <div className="bg-[url('/images/pattern.jpg')] h-full w-full rounded-2xl object-cover">
-          <div className="w-full h-full flex flex-col gap-10 justify-center items-center">
-            <h3 className="text-4xl text-white font-medium">
-              Rejoignez ma newsletter pour ne rien manquer
-            </h3>
-            <div className="inline-flex w-1/3 gap-4">
-              <Input
-                className="h-12 w-full focus-visible:ring-blue-700 ring-offset-blue-700"
-                type="email"
-                placeholder="Email"
-              />
-              <Button className="h-12 rounded-lg">
-                Je m'inscris
-                <ArrowRightIcon className="ml-3 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
+
       <div className="mx-auto py-20">
         <CarouselSize morePosts={morePosts} />
       </div>

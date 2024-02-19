@@ -1,7 +1,7 @@
 import { getAllPosts, getCategory } from "@/lib/api";
 import { draftMode } from "next/headers";
 import Image from "next/image";
-import AllStories from "../_components/all-stories";
+import AllStories from "../components/all-stories";
 
 const Page = async () => {
   const { isEnabled } = draftMode();

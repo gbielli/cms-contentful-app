@@ -1,6 +1,6 @@
 "use client";
 
-import PostPreview from "@/app/_components/post-preview";
+import PostPreview from "@/app/components/post-preview";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "../_ui/button";
+import { Button } from "../ui/button";
 
 const Header = () => {
   return (

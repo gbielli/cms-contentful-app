@@ -1,11 +1,11 @@
 import { draftMode } from "next/headers";
 import Link from "next/link";
 
-import Avantages from "@/app/_components/_articles/productOverview";
-import CoverImage from "@/app/_components/cover-image";
+import Avantages from "@/app/components/articles/productOverview";
+import CoverImage from "@/app/components/cover-image";
 
-import Affilation from "@/app/_components/affilation";
-import MoreStories from "@/app/_components/more-stories";
+import Affilation from "@/app/components/affilation";
+import MoreStories from "@/app/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
 

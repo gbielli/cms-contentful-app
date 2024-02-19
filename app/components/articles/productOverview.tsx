@@ -1,9 +1,9 @@
-import CoverImage from "@/app/_components/cover-image";
+import CoverImage from "@/app/components/cover-image";
 import logoAmazon from "@/public/images/logo-amazon.png";
 import Negative from "@/public/images/negative.svg";
 import Positive from "@/public/images/positive.svg";
 import Image from "next/image";
-import { Button } from "../_ui/button";
+import { Button } from "../ui/button";
 
 type avantagesProps = {
   post: {

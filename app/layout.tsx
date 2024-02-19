@@ -1,5 +1,6 @@
 import { CMS_NAME, EXAMPLE_PATH } from "@/lib/constants";
 import localFont from "next/font/local";
+import { Toaster } from "./components/ui/toaster";
 import "./globals.css";
 
 export const metadata = {
@@ -68,6 +69,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </section>
+        <Toaster />
       </body>
     </html>
   );

@@ -4,8 +4,8 @@ import {
   NavigationMenuItem,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/app/_components/_ui/navigation-menu";
-import LinkItem from "./_ui/linkItem";
+} from "@/app/components/ui/navigation-menu";
+import LinkItem from "./ui/linkItem";
 
 const items = [
   {

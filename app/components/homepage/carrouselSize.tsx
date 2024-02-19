@@ -1,12 +1,12 @@
-import { buttonVariants } from "@/app/_components/_ui/button";
-import { Card, CardContent } from "@/app/_components/_ui/card";
+import { buttonVariants } from "@/app/components/ui/button";
+import { Card, CardContent } from "@/app/components/ui/card";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/app/_components/_ui/carousel";
+} from "@/app/components/ui/carousel";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -34,7 +34,6 @@ export function CarouselSize({ morePosts }: { morePosts: any[] }) {
                         className="object-cover w-full h-full rounded-2xl"
                         src="/images/psyoyo.webp"
                         fill={true}
-                        objectFit="cover"
                         alt=""
                       />
                       <div className="image h-full w-full">

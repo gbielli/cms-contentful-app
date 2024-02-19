@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle } from "@/app/_components/_ui/card";
+import { Card, CardHeader, CardTitle } from "@/app/components/ui/card";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 

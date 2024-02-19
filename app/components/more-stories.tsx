@@ -1,4 +1,4 @@
-import { Button } from "@/app/_components/_ui/button";
+import { Button } from "@/app/components/ui/button";
 import PostPreview from "./post-preview";
 
 export default function MoreStories({ morePosts }: { morePosts: any[] }) {
