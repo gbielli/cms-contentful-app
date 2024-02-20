@@ -17,7 +17,7 @@ const form = () => {
     event.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3000/api/contactEmail", {
+      const res = await fetch("/api/contactEmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,6 +38,7 @@ const form = () => {
           description: "Un problème est servenu au moment de votre inscription",
         });
       } else {
+        sendEmail();
         toast({
           title: "Newsletter",
           className: "bg-green-500 text-white",
@@ -45,7 +46,6 @@ const form = () => {
         });
       }
     } catch (error) {
-      // sendEmail();
       toast({
         title: "Newsletter",
         className: "bg-red-500 text-white",
@@ -56,7 +56,7 @@ const form = () => {
   }
 
   async function sendEmail() {
-    const res = await fetch("http://localhost:3000/api/sendEmail", {
+    const res = await fetch("/api/sendEmail", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
