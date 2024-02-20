@@ -29,7 +29,7 @@ const manrope = localFont({
 function Footer() {
   return (
     <footer className="bg-accent-1 border-t border-accent-2">
-      <div className="container mx-auto px-5">
+      <div className="container mx-auto">
         <div className="py-28 flex flex-col lg:flex-row items-center">
           <h3 className="text-4xl lg:text-5xl font-bold tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2">
             Built with Next.js.
@@ -64,7 +64,7 @@ export default function RootLayout({
       lang="fr"
       className={`${roundo.variable} ${manrope.variable} scroll-smooth`}
     >
-      <body className="bg-[#f9f9f9]">
+      <body className="bg-slate-100">
         <section className="min-h-screen">
           <main>{children}</main>
           <Footer />

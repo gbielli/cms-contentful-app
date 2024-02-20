@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export function CarouselSize({ morePosts }: { morePosts: any[] }) {
   return (
-    <>
+    <section className="container">
       <div className="text-4xl leading-snug font-bold">
         Les derniers articles
       </div>
@@ -72,6 +72,6 @@ export function CarouselSize({ morePosts }: { morePosts: any[] }) {
         <CarouselPrevious />
         <CarouselNext />
       </Carousel>
-    </>
+    </section>
   );
 }

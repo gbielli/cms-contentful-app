@@ -38,7 +38,7 @@ const form = () => {
           description: "Un problème est servenu au moment de votre inscription",
         });
       } else {
-        sendEmail();
+        // sendEmail();
         toast({
           title: "Newsletter",
           className: "bg-green-500 text-white",
@@ -74,21 +74,22 @@ const form = () => {
   }
 
   return (
-    <section className="p-20 bg-black">
-      <div className="h-[300px] w-full my-20">
+    <section className="bg-slate-100">
+      <div className="container h-[300px] w-full my-20">
         <div className="bg-[url('/images/pattern.jpg')] h-full w-full rounded-2xl object-cover">
-          <div className="w-full h-full flex flex-col gap-10 justify-center items-center">
+          <div className="w-full h-full flex flex-col gap-10 justify-center items-center px-5">
             <h3 className="text-4xl text-white font-medium">
               Rejoignez ma newsletter pour ne rien manquer
             </h3>
-            <form className="inline-flex w-1/3 gap-4" onSubmit={createContact}>
+            <form
+              className="flex px-5 w-full md:w-[550px] gap-4"
+              onSubmit={createContact}
+            >
               <Input
                 className="h-12 w-full focus-visible:ring-blue-700 ring-offset-blue-700"
                 type="email"
                 placeholder="Email"
-                id="email"
                 required
-                name="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />

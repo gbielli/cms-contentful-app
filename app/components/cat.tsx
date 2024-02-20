@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Category = () => {
   return (
-    <div className="grid grid-cols-3 gap-10 pt-20">
+    <section className="container grid md:grid-cols-3 gap-10 pt-20">
       <Card className="bg-background hover:scale-[1.02] transition duration-200">
         <CardHeader className="flex flex-row items-center gap-5 border hover:border-primary  rounded-2xl">
           <CardTitle className="text-3xl">Soin du crâne</CardTitle>
@@ -32,7 +32,7 @@ const Category = () => {
           </div>
         </CardHeader>
       </Card>
-    </div>
+    </section>
   );
 };
 
