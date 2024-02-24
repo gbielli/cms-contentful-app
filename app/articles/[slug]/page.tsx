@@ -12,8 +12,6 @@ import { Markdown } from "@/lib/markdown";
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
 
-  console.log(allPosts);
-
   return allPosts.map((post) => ({
     slug: post.slug,
   }));

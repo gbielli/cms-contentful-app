@@ -2,9 +2,9 @@ import { CheckCircle2 } from "lucide-react";
 
 const reassurance = () => {
   return (
-    <section className="bg-slate-100 py-20">
-      <div className="container grid grid-cols-2 lg:grid-cols-4 gap-20 justify-center my-3 py-20">
-        <div className="flex items-center justify-center my-3 gap-2">
+    <section className="bg-white">
+      <div className="container grid grid-cols-2 lg:grid-cols-4 gap-20 py-20">
+        <div className="flex items-center justify-start my-3 gap-2">
           <CheckCircle2
             width={35}
             height={35}
@@ -13,7 +13,7 @@ const reassurance = () => {
           />
           <p className="text-lg">Non sponsorisé</p>
         </div>
-        <div className="flex items-center justify-center my-3 gap-2">
+        <div className="flex items-center justify-start my-3 gap-2">
           <CheckCircle2
             width={35}
             height={35}
@@ -22,7 +22,7 @@ const reassurance = () => {
           />
           <p className="text-lg">Produits testés</p>
         </div>
-        <div className="flex items-center justify-center my-3 gap-2">
+        <div className="flex items-center justify-start my-3 gap-2">
           <CheckCircle2
             width={35}
             height={35}
@@ -31,7 +31,7 @@ const reassurance = () => {
           />
           <p className="text-lg">Liens d'affiliation</p>
         </div>
-        <div className="flex items-center justify-center my-3 gap-2">
+        <div className="flex items-center justify-start my-3 gap-2">
           <CheckCircle2
             width={35}
             height={35}

@@ -3,11 +3,11 @@ import { Button } from "../ui/button";
 
 const Header = () => {
   return (
-    <section className="py-40 bg-white">
+    <section className="pt-20 bg-white">
       <div className="container grid  grid-cols-1 lg:grid-cols-2 gap-20 max-sm:gap-10">
         <div>
           <div className="flex flex-col h-full w-full justify-center max-w-3xl max-lg:mx-auto">
-            <h1 className="text-5xl font-semibold mb-4">
+            <h1 className="text-5xl font-medium mb-4">
               Mes avis <span className="text-primary">sans filtre </span>pour
               les cranes rasés et les soins pour homme
             </h1>
@@ -18,9 +18,11 @@ const Header = () => {
               corporis!
             </p>
             <div className="flex gap-4">
-              <Button size={"lg"}>Découvrir mes articles</Button>
+              <Button size={"lg"} className="rounded-sm">
+                Découvrir mes articles
+              </Button>
               <Button
-                className="bg-transparent border-primary text-primary hover:bg-transparent hover:text-primary"
+                className="bg-transparent border-primary text-primary hover:bg-transparent hover:text-primary rounded-sm"
                 size={"lg"}
                 variant={"outline"}
               >

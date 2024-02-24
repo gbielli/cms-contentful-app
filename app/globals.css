@@ -75,6 +75,12 @@
   }
 }
 
+@layer components {
+  .container {
+    @apply max-w-[160rem];
+  }
+}
+
 h1,
 h2,
 h3,

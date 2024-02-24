@@ -75,29 +75,34 @@ const form = () => {
 
   return (
     <section className="bg-slate-100">
-      <div className="container h-[300px] w-full my-20">
-        <div className="bg-[url('/images/pattern.jpg')] h-full w-full rounded-2xl object-cover">
-          <div className="w-full h-full flex flex-col gap-10 justify-center items-center px-5">
-            <h3 className="text-4xl text-white font-medium">
-              Rejoignez ma newsletter pour ne rien manquer
-            </h3>
-            <form
-              className="flex px-5 w-full md:w-[550px] gap-4"
-              onSubmit={createContact}
-            >
-              <Input
-                className="h-12 w-full focus-visible:ring-blue-700 ring-offset-blue-700"
-                type="email"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Button type="submit" className="h-12 rounded-lg">
-                Je m'inscris
-                <ArrowRightIcon className="ml-3 h-4 w-4" />
-              </Button>
-            </form>
+      <div className=" w-full">
+        <div className="bg-[url('/images/pattern.jpg')] bg-cover h-full w-full object-cover py-20">
+          <div className="container h-full flex flex-col justify-center gap-10 items-center">
+            <div className=" w-full">
+              <h3 className="text-4xl leading-snug text-white font-medium text-center ml-4">
+                Ta peau est à un clic de te remercier. Je teste et te partage
+                les meilleurs produits pour homme par email.
+              </h3>
+            </div>
+            <div className="flex justify-start w-full">
+              <form
+                className="flex px-5 w-full mx-auto md:w-[550px]  gap-4"
+                onSubmit={createContact}
+              >
+                <Input
+                  className="h-12 w-full focus-visible:ring-blue-700 ring-offset-blue-700"
+                  type="email"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Button type="submit" className="h-12 rounded-lg">
+                  Je m'inscris
+                  <ArrowRightIcon className="ml-3 h-4 w-4" />
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
