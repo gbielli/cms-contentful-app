@@ -1,6 +1,5 @@
 import { draftMode } from "next/headers";
 
-import Nav from "@/app/components/nav";
 import { getAllPosts, getCategory } from "@/lib/api";
 import Cat from "./components/cat";
 import Form from "./components/form/form";
@@ -17,7 +16,6 @@ export default async function Page() {
 
   return (
     <div className="mx-auto">
-      <Nav />
       <HeaderDestructive />
       <Reassurance />
       <CarouselSize morePosts={morePosts} />

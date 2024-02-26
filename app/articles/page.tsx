@@ -1,7 +1,6 @@
 import { getAllPosts, getCategory } from "@/lib/api";
 import { draftMode } from "next/headers";
 import AllStories from "../components/all-stories";
-import Nav from "../components/nav";
 
 const Page = async () => {
   const { isEnabled } = draftMode();
@@ -9,8 +8,6 @@ const Page = async () => {
   const category = await getCategory();
   return (
     <div>
-      <Nav />
-
       <div className="py-10">
         <h1 className="text-7xl font-roundo font-semibold text-center line-clamp-3 max-w-4xl mx-auto">
           Les articles pour les chauves par un chauve.
