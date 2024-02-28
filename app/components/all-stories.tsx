@@ -70,7 +70,7 @@ const AllStories = ({
           onClick={handleAllCategoryClick}
           className={`${
             isActive.isHover && isActive.index === -1
-              ? "bg-black text-white"
+              ? "bg-primary border-primary text-white"
               : ""
           } flex gap-3 border border-black px-10 py-4 rounded-full items-center`}
         >
@@ -84,7 +84,7 @@ const AllStories = ({
               key={index}
               className={`${
                 isActive.isHover && isActive.index == index
-                  ? "bg-black text-white "
+                  ? "bg-primary border-primary text-white "
                   : ""
               } flex gap-3 border border-black px-10 py-4 rounded-full items-center`}
             >

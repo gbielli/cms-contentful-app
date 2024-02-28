@@ -1,10 +1,9 @@
 import { draftMode } from "next/headers";
-import Link from "next/link";
 
 import Avantages from "@/app/components/articles/productOverview";
-import CoverImage from "@/app/components/cover-image";
 
 import Affilation from "@/app/components/affilation";
+import CoverImage from "@/app/components/cover-image";
 import MoreStories from "@/app/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
@@ -42,12 +41,15 @@ export default async function PostPage({
 }) {
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+  const obj = post.content.json.content;
+  const item = obj.map((ob) => ob.content);
+  // console.log(item);
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: post.title,
-    description: "product.description",
+    description: "produit",
     image: "",
     author: "Patrick Coombe",
     datePublished: "2015-09-20",
@@ -68,13 +70,7 @@ export default async function PostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="container mx-auto px-5">
-        <h2 className="text-2xl md:text-4xl font-bold mb-20 mt-8">
-          <Link href="/" className="hover:underline">
-            Le mec rasoir
-          </Link>
-          .
-        </h2>
+      <div className="container mx-auto px-5 ">
         <article className="mx-auto">
           <div className="text-center mb-10 flex items-center gap-3 justify-center mx-auto ">
             <svg
@@ -92,7 +88,7 @@ export default async function PostPage({
               />
             </svg>
             <div className="">
-              <a className=" text-gray-500" href="/blog">
+              <a className=" text-gray-500" href="/articles">
                 Retour sur les articles
               </a>
             </div>

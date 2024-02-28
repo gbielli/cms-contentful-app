@@ -1,7 +1,9 @@
+import { Button } from "@/app/components/ui/button";
 import Summary from "@/public/images/summary.svg";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import { BLOCKS } from "@contentful/rich-text-types";
+import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
+import Link from "next/link";
 import "/lib/markdown.css";
 
 interface Asset {
@@ -67,7 +69,7 @@ export function Markdown({ content }: { content: Content }) {
 
   return (
     <div>
-      <div className="border p-6 rounded-md bg-white">
+      <div className="border p-6 rounded-md bg-slate-100 border-slate-300">
         <h3 className="text-2xl mb-3 font-medium">Sommaire</h3>
         {summary.map((item: any, index) => {
           return (
@@ -83,12 +85,14 @@ export function Markdown({ content }: { content: Content }) {
 
       {documentToReactComponents(content.json, {
         renderNode: {
-          [BLOCKS.EMBEDDED_ASSET]: (node: any) => (
-            <RichTextAsset
-              id={node.data.target.sys.id}
-              assets={content.links.assets.block}
-            />
-          ),
+          [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+            return (
+              <RichTextAsset
+                id={node.data.target.sys.id}
+                assets={content.links.assets.block}
+              />
+            );
+          },
           [BLOCKS.HEADING_2]: (node: any, children: any) => (
             <h2 className="text-3xl py-6 font-medium" id={slugify(children)}>
               {children}
@@ -97,6 +101,24 @@ export function Markdown({ content }: { content: Content }) {
           [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
             <p className="text-lg py-3">{children}</p>
           ),
+          [INLINES.HYPERLINK]: ({ data }, children: any) => {
+            if (children && children[0].includes("Consulter")) {
+              return (
+                <Button
+                  asChild
+                  rel={`noopener noreferrer`}
+                  className="bg-primary"
+                >
+                  <Link href={data.uri}>{children}</Link>
+                </Button>
+              );
+            }
+            return (
+              <Link className="text-primary" href={data.uri}>
+                {children}
+              </Link>
+            );
+          },
         },
       })}
     </div>

@@ -46,9 +46,8 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
   const stars = Array.from({ length: totalStars }, (_, index) => {
     if (index < numberOfStars) {
       return (
-        <div className={`${starColorClass} mr-2 p-1 rounded-md`}>
+        <div className={`${starColorClass} mr-2 p-1 rounded-md`} key={index}>
           <svg
-            key={index}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -93,9 +92,9 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
 export default function productOverview({ post }: avantagesProps) {
   return (
     <>
-      <div className="mb-10">
-        <div className="max-w-3xl mx-auto bg-white pb-10 rounded-2xl border border-slate-200">
-          <div>
+      <div className="mb-10 ">
+        <div className="max-w-3xl mx-auto bg-slate-100 pb-10 rounded-2xl border border-slate-300 ">
+          <div className="bg-white rounded-2xl">
             {post.productImage && (
               <CoverImage
                 url={post.productImage.url}
@@ -105,16 +104,16 @@ export default function productOverview({ post }: avantagesProps) {
               />
             )}
           </div>
-          <div className="p-8">
+          <div className="p-8 bg-slate-100">
             <h3 className="text-2xl font-semibold font-roundo mb-4">
               {post.avantages.title}
             </h3>
-            <div className="flex gap-3 items-center text-xl mb-8">
+            <div className="bg-slate-100 flex gap-3 items-center text-xl mb-8">
               <Stars number={post.stars} total={5} />
               <p> {post.stars} / 5 </p>
             </div>
             <div className="flex items-center w-full justify-between mb-3 pb-4 border-b ">
-              <div className="left flex h-6 items-center gap-3">
+              <div className="left flex h-6 items-center gap-3 ">
                 <Image
                   className="object-cover w-full h-full"
                   src={logoAmazon}
@@ -128,13 +127,13 @@ export default function productOverview({ post }: avantagesProps) {
               </div>
             </div>
           </div>
-          <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2">
+          <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
             <div className="">
               <h3 className="font-medium text-xl">Les plus du produit</h3>
               <div className="flex flex-col gap-2 mt-3">
                 {post.avantages.like.map((item, index) => {
                   return (
-                    <div className="flex gap-2 mb-2" key={index}>
+                    <div className="flex gap-2 mb-2" key={`like_${index}`}>
                       <Image
                         src={Positive}
                         alt="point positif"
@@ -152,7 +151,7 @@ export default function productOverview({ post }: avantagesProps) {
               <div className="flex flex-col gap-2 mt-3">
                 {post.avantages.dislike.map((item, index) => {
                   return (
-                    <div className="flex gap-2 mb-2" key={index}>
+                    <div className="flex gap-2 mb-2" key={`dislike_${index}`}>
                       <Image
                         src={Negative}
                         alt="point positif"
