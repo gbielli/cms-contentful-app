@@ -1,6 +1,9 @@
 const POST_GRAPHQL_FIELDS = `
   slug
   title
+  sys {
+    publishedAt
+  }
   coverImage {
     url
   }
@@ -133,7 +136,7 @@ export async function getPostAndMorePosts(
     `query {
       postCollection(where: { slug_not_in: "${slug}" }, order: date_DESC, preview: ${
       preview ? "true" : "false"
-    }, limit: 2) {
+    }, limit: 3) {
         items {
           ${POST_GRAPHQL_FIELDS}
         }

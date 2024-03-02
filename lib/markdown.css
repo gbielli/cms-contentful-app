@@ -1,12 +1,14 @@
-
 .with-before::before {
-    content: '#'; /* Your content here */
-    color: #0068ad; /* Your desired text color (blue in this case) */
-    margin-right: 0.5rem;
-    font-weight: bold; /* Adjust spacing as needed */
-  }
+  content: "#"; /* Your content here */
+  color: #0068ad; /* Your desired text color (blue in this case) */
+  margin-right: 0.5rem;
+  font-weight: bold; /* Adjust spacing as needed */
+}
 
-  h2 {
-    padding: 1.3rem 0;
-  }
-  
+h2 {
+  padding-bottom: 1.5rem;
+}
+
+.summary {
+  margin-bottom: 40px;
+}

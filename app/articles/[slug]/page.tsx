@@ -4,6 +4,7 @@ import Avantages from "@/app/components/articles/productOverview";
 
 import Affilation from "@/app/components/affilation";
 import CoverImage from "@/app/components/cover-image";
+import DateComponent from "@/app/components/date";
 import MoreStories from "@/app/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
@@ -41,15 +42,13 @@ export default async function PostPage({
 }) {
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
-  const obj = post.content.json.content;
-  const item = obj.map((ob) => ob.content);
-  // console.log(item);
 
+  console.log(post);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: post.title,
-    description: "produit",
+    description: post.excerpt,
     image: "",
     author: "Patrick Coombe",
     datePublished: "2015-09-20",
@@ -99,14 +98,11 @@ export default async function PostPage({
                 {post.category && <p>{post.category.name}</p>}
               </div>
             </div>
-            <h1 className="text-center text-5xl font-semibold mb-4">
+            <h1 className="text-center text-5xl font-medium mb-4">
               {post.title}
             </h1>
             <p className="text-xl md:text-xl text-center font-archivo ">
-              Depuis maintenant plusieurs années, La poussette yoyo est un
-              incontournable dans sa catégorie. Mais est-ce que cette poussette
-              répond vraiement à tous les besoins, je l'ai testé pendant 1 mois
-              et je vous dit.
+              {post.excerpt && post.excerpt}
             </p>
           </div>
 
@@ -148,7 +144,8 @@ export default async function PostPage({
 
               <p className="text-slate-500 text-center  italic">
                 {" "}
-                mis à jour le 10 decembre 2023
+                mis à jour le{" "}
+                <DateComponent dateString={post.sys.publishedAt} />
               </p>
             </div>
           </div>

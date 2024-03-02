@@ -68,8 +68,8 @@ export function Markdown({ content }: { content: Content }) {
   const summary = retrieveValues(content.json.content);
 
   return (
-    <div>
-      <div className="border p-6 rounded-md bg-slate-100 border-slate-300">
+    <div className="">
+      <div className="border p-6 rounded-md bg-slate-100 border-slate-300 summary">
         <h3 className="text-2xl mb-3 font-medium">Sommaire</h3>
         {summary.map((item: any, index) => {
           return (
@@ -94,12 +94,15 @@ export function Markdown({ content }: { content: Content }) {
             );
           },
           [BLOCKS.HEADING_2]: (node: any, children: any) => (
-            <h2 className="text-3xl py-6 font-medium" id={slugify(children)}>
+            <h2
+              className="text-3xl pt-4 pb-6 font-medium"
+              id={slugify(children)}
+            >
               {children}
             </h2>
           ),
           [BLOCKS.PARAGRAPH]: (node: any, children: any) => (
-            <p className="text-lg py-3">{children}</p>
+            <p className="text-lg pb-4">{children}</p>
           ),
           [INLINES.HYPERLINK]: ({ data }, children: any) => {
             if (children && children[0].includes("Consulter")) {
