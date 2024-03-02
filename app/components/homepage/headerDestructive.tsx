@@ -37,10 +37,7 @@ const HeaderDestructive = () => {
               corporis!
             </p>
             <div className="flex gap-4 flex-wrap">
-              <Button
-                size={"lg"}
-                className="rounded-sm flex items-center gap-3"
-              >
+              <Button size={"lg"} className="flex items-center gap-3">
                 Découvrir mes articles
                 <ArrowRight className="h-5" />
               </Button>
