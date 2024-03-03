@@ -26,6 +26,14 @@ const POST_GRAPHQL_FIELDS = `
     title
     like
     dislike
+    vendor {
+      name
+      price
+      url
+      icon {
+        url
+      }
+    }
   }
   excerpt
   content {
@@ -44,6 +52,40 @@ const POST_GRAPHQL_FIELDS = `
   }
   
 `;
+
+const POST_GRAPHQL_VENDOR = `
+slug
+title
+avantages {
+  title
+  like
+  dislike
+  vendor {
+    icon {
+      url
+    }
+    name
+    price
+    url
+  }
+}
+`;
+
+// export async function getVendors(isDraftMode: boolean): Promise<any[]> {
+//   const entries = await fetchGraphQL(
+//     `query {
+//       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
+//         isDraftMode ? "true" : "false"
+//       }) {
+//         items {
+//           ${POST_GRAPHQL_VENDOR}
+//         }
+//       }
+//     }`,
+//     isDraftMode
+//   );
+//   return extractPostEntries(entries);
+// }
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
@@ -73,6 +115,7 @@ function extractPostEntries(fetchResponse: any): any[] {
 }
 
 export async function getPreviewPostBySlug(slug: string | null): Promise<any> {
+  console.log();
   const entry = await fetchGraphQL(
     `query {
       postCollection(where: { slug: "${slug}" }, preview: true, limit: 1) {

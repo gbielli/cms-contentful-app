@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export function CarouselSize({ morePosts }: { morePosts: any[] }) {
   return (
-    <section className="container pt-20">
+    <section className="container pt-20 bg-slate-100">
       <div className="text-4xl leading-snug font-bold">
         Mes derniers articles au poil !
       </div>
@@ -36,19 +36,19 @@ export function CarouselSize({ morePosts }: { morePosts: any[] }) {
                       alt=""
                     />
                     <div className="image h-full w-full">
-                      <div className="flex items-center  justify-center px-2 py-0.5 absolute top-3 left-3 bg-white  bg-opacity-30 rounded-full backdrop-blur-lg">
-                        <span className="text-lg text-white">
+                      <div className="flex items-center  justify-center px-2 py-0.5 absolute top-3 left-3 bg-white shadow-md  bg-opacity-50 rounded-full backdrop-blur-lg">
+                        <span className="text-md text-black">
                           {post.category.name}
                         </span>
                       </div>
                       <div className="flex items-center  justify-center h-60 absolute bottom-0 w-full bg-gradient-to-t from-black via-black opacity-60 rounded-2xl"></div>
-                      <div className="px-2 py-0.5 absolute bottom-5 left-3 rounded-full">
+                      <div className="px-4 py-0.5 absolute bottom-5 rounded-full">
                         <h3 className="text-2xl text-white font-medium">
                           {post.title}
                         </h3>
                         <div className="mt-4">
                           <Link
-                            className={`${buttonVariants({
+                            className={`ml-auto ${buttonVariants({
                               variant: "outline",
                             })} gap-2`}
                             href={`/articles/${post.slug}`}

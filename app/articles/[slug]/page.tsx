@@ -43,7 +43,6 @@ export default async function PostPage({
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
 
-  console.log(post);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
@@ -175,8 +174,8 @@ export default async function PostPage({
 
           <Affilation post={post} />
         </article>
-        <hr className="border-accent-2 mt-28 mb-24" />
-        <MoreStories morePosts={morePosts} />
+        <hr className="border-accent-2 my-10" />
+        <MoreStories morePosts={morePosts} asLink={false} />
       </div>
     </>
   );

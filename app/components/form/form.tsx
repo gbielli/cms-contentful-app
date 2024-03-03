@@ -46,7 +46,7 @@ const form = () => {
           className: "bg-green-500 text-white",
           description: "Votre inscription a bien été prise en compte",
         });
-        setIsLoading(false);
+        setIsLoading(true);
       }
     } catch (error) {
       toast({

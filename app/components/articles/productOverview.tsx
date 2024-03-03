@@ -1,8 +1,8 @@
 import CoverImage from "@/app/components/cover-image";
-import logoAmazon from "@/public/images/logo-amazon.png";
 import Negative from "@/public/images/negative.svg";
 import Positive from "@/public/images/positive.svg";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 type avantagesProps = {
@@ -15,6 +15,14 @@ type avantagesProps = {
       title: string;
       like: string[];
       dislike: string[];
+      vendor: {
+        name: string;
+        price: number;
+        url: string;
+        icon: {
+          url: string;
+        };
+      };
     };
   };
 };
@@ -94,7 +102,7 @@ export default function productOverview({ post }: avantagesProps) {
     <>
       <div className="mb-10 ">
         <div className="max-w-3xl mx-auto bg-slate-100 pb-10 rounded-2xl border border-slate-300 ">
-          <div className="bg-white rounded-2xl">
+          <div className="bg-white rounded-2xl py-6">
             {post.productImage && (
               <CoverImage
                 url={post.productImage.url}
@@ -105,25 +113,35 @@ export default function productOverview({ post }: avantagesProps) {
             )}
           </div>
           <div className="p-8 bg-slate-100">
-            <h3 className="text-2xl font-semibold font-roundo mb-4">
+            <h3 className="text-2xl font-medium font-roundo mb-4">
               {post.avantages.title}
             </h3>
             <div className="bg-slate-100 flex gap-3 items-center text-xl mb-8">
               <Stars number={post.stars} total={5} />
               <p> {post.stars} / 5 </p>
             </div>
-            <div className="flex items-center w-full justify-between mb-3 pb-4 border-b ">
-              <div className="left flex h-6 items-center gap-3 ">
+            <div className="flex items-center w-full justify-between mb-3 pb-4 border-b">
+              <div className="left flex h-6 items-center gap-3">
                 <Image
                   className="object-cover w-full h-full"
-                  src={logoAmazon}
+                  src={post.avantages.vendor.icon.url}
                   alt="amazon logo"
+                  width={32}
+                  height={32}
                 />
-                <h2 className="text-lg">Amazon</h2>
+                <p className="text-lg">{post.avantages.vendor.name}</p>
               </div>
               <div className="right flex gap-10 items-center">
-                <p className="text-lg">59€</p>
-                <Button className="px-7">Voir l'offre</Button>
+                <p className="text-lg">{post.avantages.vendor.price}€</p>
+                <Button className="px-7" asChild>
+                  <Link
+                    href={`${
+                      post.avantages.vendor.url && post.avantages.vendor.url
+                    }`}
+                  >
+                    Voir l'offre
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
