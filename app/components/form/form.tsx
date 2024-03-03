@@ -12,6 +12,7 @@ type FormInput = {
 const form = () => {
   const { toast } = useToast();
   const [email, setEmail] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function createContact(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -30,6 +31,7 @@ const form = () => {
       }
 
       const data = await res.json();
+      setIsLoading(true);
 
       if (data.data.error) {
         toast({
@@ -44,6 +46,7 @@ const form = () => {
           className: "bg-green-500 text-white",
           description: "Votre inscription a bien été prise en compte",
         });
+        setIsLoading(false);
       }
     } catch (error) {
       toast({
@@ -97,7 +100,11 @@ const form = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <Button type="submit" className="h-12 rounded-lg">
+                <Button
+                  type="submit"
+                  className="h-12 rounded-lg"
+                  disabled={isLoading}
+                >
                   Je m'inscris
                   <ArrowRightIcon className="ml-3 h-4 w-4" />
                 </Button>
