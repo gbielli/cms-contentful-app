@@ -68,7 +68,7 @@ export default async function PostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="container mx-auto px-5 ">
+      <div className="container mx-auto px-5">
         <article className="mx-auto">
           <div className="text-center mb-10 flex items-center gap-3 justify-center mx-auto ">
             <svg
