@@ -3,6 +3,7 @@ const POST_GRAPHQL_FIELDS = `
   title
   sys {
     publishedAt
+    firstPublishedAt
   }
   coverImage {
     url

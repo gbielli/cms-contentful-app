@@ -37,13 +37,13 @@ function Footer() {
           </h3>
           <div className="grid gid-cols-1 sm:grid-cols-2 justify-center items-center lg:pl-4 lg:w-1/2">
             <div className="grid mx-3  text-white py-3 px-12 lg:px-8 mb-6 lg:mb-0">
-              <h3 className="mb-2 font-semibold">Read Documentation</h3>
+              <p className="mb-2 font-semibold">Read Documentation</p>
               <a href="#">Avis produit</a>
               <a href="#">Avis marque</a>
               <a href="#">tutoriels</a>
             </div>
             <div className="grid mx-3  text-white py-3 px-12 lg:px-8 mb-6 lg:mb-0">
-              <h3 className="mb-2 font-semibold">Read Documentation</h3>
+              <p className="mb-2 font-semibold">Read Documentation</p>
               <a href="#">Avis produit</a>
               <a href="#">Avis marque</a>
               <a href="#">tutoriels</a>

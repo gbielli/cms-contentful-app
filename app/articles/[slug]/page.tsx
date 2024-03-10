@@ -1,13 +1,10 @@
-import { draftMode } from "next/headers";
-
-import Avantages from "@/app/components/articles/productOverview";
-
 import Affilation from "@/app/components/affilation";
 import CoverImage from "@/app/components/cover-image";
 import DateComponent from "@/app/components/date";
 import MoreStories from "@/app/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
+import { draftMode } from "next/headers";
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
@@ -48,13 +45,17 @@ export default async function PostPage({
     "@type": "NewsArticle",
     headline: post.title,
     description: post.excerpt,
-    image: "",
-    author: "Patrick Coombe",
+    image: post.coverImage.url,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+    },
+    articleSection: post.category.name,
     datePublished: "2015-09-20",
     dateModified: "2015-09-20",
     publisher: {
       "@type": "Organization",
-      name: "Google",
+      name: "Le mec rasoir",
       logo: {
         "@type": "ImageObject",
         url: "https://google.com/logo.jpg",
@@ -122,7 +123,8 @@ export default async function PostPage({
                 />
               </svg>
               <p className="text-slate-500 text-center  italic">
-                publié par <span className="font-semibold">Guillaume</span>
+                publié par{" "}
+                <span className="font-semibold">{post.author.name}</span>
               </p>
             </div>
             <div className="flex gap-3 justify-center items-center mb-5">
@@ -148,12 +150,6 @@ export default async function PostPage({
               </p>
             </div>
           </div>
-
-          {/* <div className="hidden md:block md:mb-12">
-          {post.author && (
-            <Avatar name={post.author.name} picture={post.author.picture} />
-          )}
-        </div> */}
 
           <div className="mb-8 md:mb-16 sm:mx-0 ">
             <CoverImage
