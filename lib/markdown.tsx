@@ -1,9 +1,11 @@
+import ProductOverview from "@/app/components/articles/productOverview";
+import Summary from "@/app/components/articles/summary";
 import { Button } from "@/app/components/ui/button";
-import Summary from "@/public/images/summary.svg";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
+import { slugify } from "./utils";
 import "/lib/markdown.css";
 
 interface Asset {
@@ -19,15 +21,29 @@ interface AssetLink {
 }
 
 interface Content {
-  json: any;
-  links: {
-    assets: AssetLink;
+  productImage: {
+    url: string;
   };
-}
-
-interface ContentItem {
-  nodeType: string;
-  content: { value: string }[];
+  stars: number;
+  avantages: {
+    title: string;
+    like: string[];
+    dislike: string[];
+    vendor: {
+      name: string;
+      price: number;
+      url: string;
+      icon: {
+        url: string;
+      };
+    };
+  };
+  content: {
+    json: any;
+    links: {
+      assets: AssetLink;
+    };
+  };
 }
 
 function RichTextAsset({
@@ -46,50 +62,20 @@ function RichTextAsset({
   return null;
 }
 
-const slugify = (str: string) => {
-  return str
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/[\s_-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-};
-
-export function Markdown({ content }: { content: Content }) {
-  const retrieveValues = (array: ContentItem[]) => {
-    const filter = array.filter((item) => item.nodeType === "heading-2");
-
-    return filter.map((item) =>
-      item.content.map((nestedItem) => nestedItem.value)
-    );
-  };
-
-  const summary = retrieveValues(content.json.content);
-
+export async function Markdown({ post }: { post: Content }) {
   return (
-    <div className="">
-      <div className="border p-6 rounded-md bg-slate-100 border-slate-300 summary">
-        <h3 className="text-2xl mb-3 font-medium">Sommaire</h3>
-        {summary.map((item: any, index) => {
-          return (
-            <div key={index} className="flex gap-2 mb-2">
-              <Image src={Summary} width={24} alt="summary" />
-              <a className="hover:underline" href={`#${slugify(item)}`}>
-                {item}
-              </a>
-            </div>
-          );
-        })}
-      </div>
+    <div>
+      <Summary post={post.content.json.content} />
 
-      {documentToReactComponents(content.json, {
+      <ProductOverview post={post} />
+
+      {documentToReactComponents(post.content.json, {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
             return (
               <RichTextAsset
                 id={node.data.target.sys.id}
-                assets={content.links.assets.block}
+                assets={post.content.links.assets.block}
               />
             );
           },
@@ -121,6 +107,9 @@ export function Markdown({ content }: { content: Content }) {
                 {children}
               </Link>
             );
+          },
+          [INLINES.ENTRY_HYPERLINK]: (node: any, children: any) => {
+            return <Button>{children}</Button>;
           },
         },
       })}

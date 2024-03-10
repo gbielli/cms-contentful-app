@@ -164,11 +164,11 @@ export default async function PostPage({
             />
           </div>
 
-          <Avantages post={post} />
+          {/* <Avantages post={post} /> */}
 
           <div className="max-w-3xl mx-auto ">
             <div className="prose">
-              <Markdown content={post.content} />
+              <Markdown post={post} />
             </div>
           </div>
 

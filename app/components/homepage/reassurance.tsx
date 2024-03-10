@@ -3,7 +3,7 @@ import { CheckCircle2 } from "lucide-react";
 const reassurance = () => {
   return (
     <section className="bg-white">
-      <div className="container grid grid-cols-2 lg:grid-cols-4 gap-20 py-20">
+      <div className="container grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-20 py-20">
         <div className="flex items-center justify-start my-3 gap-2">
           <CheckCircle2
             width={35}

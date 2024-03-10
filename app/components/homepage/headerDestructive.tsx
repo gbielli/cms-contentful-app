@@ -6,7 +6,7 @@ const HeaderDestructive = () => {
   return (
     <section className="pt-20 bg-white">
       <div className="relative container">
-        <h1 className="text-[96px] leading-tight font-medium mb-4">
+        <h1 className="sm:text-7xl md:text-[96px] leading-tight font-medium mb-8 md:mb-4">
           Le blog pour prendre soin de son crâne et de sa peau !
         </h1>
         {/* <div className="absolute right-[150px] top-[205px]">
@@ -18,7 +18,7 @@ const HeaderDestructive = () => {
           />
         </div> */}
       </div>
-      <div className="container grid grid-cols-1 lg:grid-cols-2 gap-20 justify-center items-center max-sm:gap-10">
+      <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-20 justify-center items-center max-sm:gap-10">
         <div className="-ml-10">
           <Image
             src="/images/header-img-v3.png"

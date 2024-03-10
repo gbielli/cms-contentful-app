@@ -97,7 +97,7 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
   return <div className="flex items-center">{stars}</div>;
 };
 
-export default function productOverview({ post }: avantagesProps) {
+export default function ProductOverview({ post }: avantagesProps) {
   return (
     <>
       <div className="mb-10 ">

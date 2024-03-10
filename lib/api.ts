@@ -25,6 +25,9 @@ const POST_GRAPHQL_FIELDS = `
   avantages {
     title
     like
+    text {
+      json
+    }
     dislike
     vendor {
       name
@@ -54,22 +57,19 @@ const POST_GRAPHQL_FIELDS = `
 `;
 
 const POST_GRAPHQL_VENDOR = `
-slug
-title
 avantages {
   title
   like
   dislike
   vendor {
-    icon {
-      url
-    }
     name
     price
     url
+    icon {
+      url
+    }
   }
-}
-`;
+}`;
 
 // export async function getVendors(isDraftMode: boolean): Promise<any[]> {
 //   const entries = await fetchGraphQL(
@@ -141,6 +141,30 @@ export async function getCategory(): Promise<any> {
     }`
   );
   return entries.data.categoryCollection.items;
+}
+
+export async function getEntryById(id: string): Promise<any> {
+  const entry = await fetchGraphQL(`
+  query {
+    postCollection(where: {sys: {id:"${id}"}}) {
+  items {
+    avantages {
+      title
+      like
+      dislike
+      vendor {
+        name
+        price
+        url
+        icon {
+          url
+        }
+      }
+    }
+    
+  }}
+    }`);
+  return extractPost(entry);
 }
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
