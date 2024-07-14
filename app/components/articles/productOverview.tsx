@@ -97,15 +97,15 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
   return <div className="flex items-center">{stars}</div>;
 };
 
-export default function ProductOverview({ post }: avantagesProps) {
+export default function ProductOverview({ overview }: any) {
   return (
     <>
       <div className="mb-10 ">
         <div className="max-w-3xl mx-auto bg-slate-100 pb-10 rounded-2xl border border-slate-300 ">
           <div className="bg-white rounded-2xl py-6">
-            {post.productImage && (
+            {overview.productImage && (
               <CoverImage
-                url={post.productImage.url}
+                url={overview.productImage.url}
                 width={400}
                 height={400}
                 title="poussette yoyo"
@@ -114,31 +114,27 @@ export default function ProductOverview({ post }: avantagesProps) {
           </div>
           <div className="p-8 bg-slate-100">
             <h3 className="text-2xl font-medium font-roundo mb-4">
-              {post.avantages.title}
+              {overview.title}
             </h3>
             <div className="bg-slate-100 flex gap-3 items-center text-xl mb-8">
-              <Stars number={post.stars} total={5} />
-              <p> {post.stars} / 5 </p>
+              <Stars number={overview.stars} total={5} />
+              <p> {overview.stars} / 5 </p>
             </div>
             <div className="flex items-center w-full justify-between mb-3 pb-4 border-b">
               <div className="left flex h-6 items-center gap-3">
                 <Image
                   className="object-cover w-full h-full"
-                  src={post.avantages.vendor.icon.url}
+                  src={overview.vendor.icon.url}
                   alt="amazon logo"
                   width={32}
                   height={32}
                 />
-                <p className="text-lg">{post.avantages.vendor.name}</p>
+                <p className="text-lg">{overview.vendor.name}</p>
               </div>
               <div className="right flex gap-10 items-center">
-                <p className="text-lg">{post.avantages.vendor.price}€</p>
+                <p className="text-lg">{overview.vendor.price}€</p>
                 <Button className="px-7" asChild>
-                  <Link
-                    href={`${
-                      post.avantages.vendor.url && post.avantages.vendor.url
-                    }`}
-                  >
+                  <Link href={`${overview.vendor.url && overview.vendor.url}`}>
                     Voir l'offre
                   </Link>
                 </Button>
@@ -149,7 +145,7 @@ export default function ProductOverview({ post }: avantagesProps) {
             <div className="">
               <h3 className="font-medium text-xl">Les plus du produit</h3>
               <div className="flex flex-col gap-2 mt-3">
-                {post.avantages.like.map((item, index) => {
+                {overview.like.map((item, index) => {
                   return (
                     <div className="flex gap-2 mb-2" key={`like_${index}`}>
                       <Image
@@ -167,7 +163,7 @@ export default function ProductOverview({ post }: avantagesProps) {
             <div className="">
               <h3 className="font-medium text-xl">Les moins du produit</h3>
               <div className="flex flex-col gap-2 mt-3">
-                {post.avantages.dislike.map((item, index) => {
+                {overview.dislike.map((item, index) => {
                   return (
                     <div className="flex gap-2 mb-2" key={`dislike_${index}`}>
                       <Image

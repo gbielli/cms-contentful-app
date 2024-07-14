@@ -40,7 +40,7 @@ export default function Index() {
             href="/"
             className="text-2xl font-roundo font-medium md:pr-8 py-10"
           >
-            Le mec rasoir
+            Family Tribes
           </a>
         </div>
       </div>

@@ -40,9 +40,7 @@ interface Content {
   };
   content: {
     json: any;
-    links: {
-      assets: AssetLink;
-    };
+    links: any;
   };
 }
 
@@ -63,11 +61,17 @@ function RichTextAsset({
 }
 
 export async function Markdown({ post }: { post: Content }) {
+  const links = post.content.links;
+
+  const entryMap = new Map();
+
+  for (const entry of links.entries.block) {
+    entryMap.set(entry.sys.id, entry);
+  }
+
   return (
     <div>
       <Summary post={post.content.json.content} />
-
-      <ProductOverview post={post} />
 
       {documentToReactComponents(post.content.json, {
         renderNode: {
@@ -107,6 +111,16 @@ export async function Markdown({ post }: { post: Content }) {
                 {children}
               </Link>
             );
+          },
+          [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
+            // find the entry in the entryMap by ID
+            const entry = entryMap.get(node.data.target.sys.id);
+
+            // render the entries as needed by looking at the __typename
+            // referenced in the GraphQL query
+            if (entry.__typename === "Avantages") {
+              return <ProductOverview overview={entry} />;
+            }
           },
           [INLINES.ENTRY_HYPERLINK]: (node: any, children: any) => {
             return <Button>{children}</Button>;

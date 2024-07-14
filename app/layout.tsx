@@ -1,7 +1,8 @@
 import Header from "@/app/components/Header";
+import { Toaster } from "@/app/components/ui/toaster";
 import { CMS_NAME } from "@/lib/constants";
 import localFont from "next/font/local";
-import { Toaster } from "./components/ui/toaster";
+import React from "react";
 import "./globals.css";
 
 export const metadata = {

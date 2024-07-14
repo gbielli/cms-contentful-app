@@ -15,7 +15,7 @@ export function CarouselSize({ morePosts }: { morePosts: any[] }) {
   return (
     <section className="container pt-20 bg-slate-100">
       <div className="text-4xl leading-snug font-bold">
-        Mes derniers articles au poil !
+        Nos derniers articles
       </div>
       <Carousel
         opts={{

@@ -42,6 +42,7 @@ const PostPreview = ({
           url={coverImage.url}
           width={1200}
           height={800}
+          category={category.slug}
         />
       </div>
       <div className="text-sm mb-2 text-slate-700">

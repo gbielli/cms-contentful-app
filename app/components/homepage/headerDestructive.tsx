@@ -1,13 +1,14 @@
-import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "../ui/button";
 
 const HeaderDestructive = () => {
   return (
     <section className="pt-20 bg-white">
       <div className="relative container">
-        <h1 className="sm:text-7xl md:text-[96px] leading-tight font-medium mb-8 md:mb-4">
-          Le blog pour prendre soin de son crâne et de sa peau !
+        <h1 className="sm:text-7xl md:text-6xl leading-tight font-medium mb-8 md:mb-4">
+          Une petite famille, des expériences et des avis sincères, tout
+          simplement !
         </h1>
         {/* <div className="absolute right-[150px] top-[205px]">
           <Image
@@ -31,22 +32,23 @@ const HeaderDestructive = () => {
         <div>
           <div className="flex flex-col h-full w-full justify-center max-lg:mx-auto">
             <p className="text-lg mb-8 text-slate-700">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cumque
-              qui fugiat optio dicta eum nulla sit velit saepe quam, voluptatem
-              laborum ut dolor ducimus odit facilis officiis veritatis dolorum
-              corporis!
+              On ne nait pas parent, on le devient. L'arrivée d'un petit bébé
+              est certainement l'une des plus belles choses que l'on puisse
+              vivre sur cette terre. Mais c'est aussi un saut dans l'inconnu. On
+              a décidé de partager nos expériences et nos conseils pour aider
+              les jeunes parents.
             </p>
             <div className="flex gap-4 flex-wrap">
-              <Button size={"lg"} className="flex items-center gap-3">
-                Découvrir mes articles
-                <ArrowRight className="h-5" />
+              <Button asChild size={"lg"} className="flex items-center gap-3">
+                <Link href="/articles">Découvrir nos articles</Link>
+                {/* <ArrowRight className="h-5" /> */}
               </Button>
               <Button
                 className="bg-transparent border-primary text-primary hover:bg-transparent hover:text-primary rounded-sm"
                 size={"lg"}
                 variant={"outline"}
               >
-                Me contacter
+                Nous contacter
               </Button>
             </div>
           </div>

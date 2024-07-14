@@ -9,10 +9,6 @@ const POST_GRAPHQL_FIELDS = `
     url
   }
   date
-  stars
-  productImage {
-    url
-  }
   author {
     name
     picture {
@@ -23,35 +19,31 @@ const POST_GRAPHQL_FIELDS = `
     name
     slug
   }
-  avantages {
-    title
-    like
-    text {
-      json
-    }
-    dislike
-    vendor {
-      name
-      price
-      url
-      icon {
-        url
-      }
-    }
-  }
   excerpt
   content {
     json
     links {
-      assets {
-        block {
-          sys {
-            id
-          }
-          url
-          description
+      entries {
+				block {
+					sys {
+						id}
+          __typename
+        ... on Avantages {
+					like
+          dislike
+          stars
+          productImage {
+            url
+            } 
+            vendor {
+            name
+            icon {
+            url}
+            }
+            
         }
-      }
+        }
+				}
     }
   }
   
@@ -169,19 +161,24 @@ export async function getEntryById(id: string): Promise<any> {
 }
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
-  const entries = await fetchGraphQL(
-    `query {
-      postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
-        isDraftMode ? "true" : "false"
-      }) {
-        items {
-          ${POST_GRAPHQL_FIELDS}
+  try {
+    const entries = await fetchGraphQL(
+      `query {
+        postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
+          isDraftMode ? "true" : "false"
+        }) {
+          items {
+            ${POST_GRAPHQL_FIELDS}
+          }
         }
-      }
-    }`,
-    isDraftMode
-  );
-  return extractPostEntries(entries);
+      }`,
+      isDraftMode
+    );
+    return extractPostEntries(entries);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
 }
 
 export async function getPostAndMorePosts(

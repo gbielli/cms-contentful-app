@@ -11,12 +11,14 @@ export default function CoverImage({
   slug,
   width,
   height,
+  category,
 }: {
   title: string;
   url: string;
   slug?: string;
   height: number;
   width: number;
+  category?: string;
 }) {
   const image = (
     <ContentfulImage

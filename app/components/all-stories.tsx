@@ -1,13 +1,7 @@
 "use client";
 
 import PostPreview from "@/app/components/post-preview";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
-
-type Category = {
-  name: string;
-  slug: string;
-};
 
 type State = {
   isHover: boolean;
@@ -28,7 +22,13 @@ const AllStories = ({
     title: "",
   });
 
-  const router = useRouter();
+  const handleActiveCategory = (categoryName: string, index: any) => {
+    setIsActive({
+      isHover: true,
+      index: index,
+      title: categoryName.toLowerCase(),
+    });
+  };
 
   const filteredpost = (posts: any) => {
     if (isActive.index != -1) {
@@ -41,26 +41,8 @@ const AllStories = ({
     }
   };
 
-  const createQueryString = (name: string, value: any) => {
-    const params = new URLSearchParams();
-    params.set(name, value);
-
-    return params.toString();
-  };
-
-  const handleCategoryClick = (category: Category, index: number) => {
-    setIsActive({ isHover: true, index: index, title: category.name });
-    router.push(
-      "/articles" +
-        "?" +
-        createQueryString("categorie", `${category.name.toLowerCase()}`),
-      { scroll: false }
-    );
-  };
-
   const handleAllCategoryClick = () => {
     setIsActive({ isHover: true, index: -1, title: "Tous" });
-    router.push("/articles", { scroll: false });
   };
 
   return (
@@ -80,7 +62,7 @@ const AllStories = ({
         {categoryList.map((category, index) => {
           return (
             <button
-              onClick={() => handleCategoryClick(category, index)}
+              onClick={() => handleActiveCategory(category.name, index)}
               key={index}
               className={`${
                 isActive.isHover && isActive.index == index
