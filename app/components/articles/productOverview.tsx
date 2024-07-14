@@ -5,23 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
-type avantagesProps = {
-  post: {
+type overviewProps = {
+  overview: {
+    title: string;
     productImage: {
       url: string;
     };
     stars: number;
-    avantages: {
-      title: string;
-      like: string[];
-      dislike: string[];
-      vendor: {
-        name: string;
-        price: number;
+    like: string[];
+    dislike: string[];
+    vendor: {
+      name: string;
+      price: number;
+      url: string;
+      icon: {
         url: string;
-        icon: {
-          url: string;
-        };
       };
     };
   };
@@ -97,7 +95,7 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
   return <div className="flex items-center">{stars}</div>;
 };
 
-export default function ProductOverview({ overview }: any) {
+export default function ProductOverview({ overview }: overviewProps) {
   return (
     <>
       <div className="mb-10 ">
