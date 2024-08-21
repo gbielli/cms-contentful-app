@@ -1,0 +1,27 @@
+.dividerLine {
+  background-image: linear-gradient(
+    to right,
+    rgba(230, 234, 239, 0),
+    #d1d6e0ae 50%,
+    rgba(230, 234, 239, 0)
+  );
+  flex-direction: column;
+  align-items: stretch;
+  height: 1.5px;
+
+  display: flex;
+}
+
+.header {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1;
+  .menu {
+    width: 480px;
+    height: 650px;
+    background-color: #f5f7fc;
+    border-radius: 25px;
+    position: relative;
+  }
+}

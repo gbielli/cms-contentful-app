@@ -1,7 +1,7 @@
-import Affilation from "@/app/components/affilation";
-import CoverImage from "@/app/components/cover-image";
-import DateComponent from "@/app/components/date";
-import MoreStories from "@/app/components/more-stories";
+import Affilation from "@/components/affilation";
+import CoverImage from "@/components/cover-image";
+import DateComponent from "@/components/date";
+import MoreStories from "@/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
 import { draftMode } from "next/headers";
@@ -40,38 +40,38 @@ export default async function PostPage({
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
 
-  // const jsonLd = {
-  //   "@context": "https://schema.org",
-  //   "@type": "NewsArticle",
-  //   headline: post.title,
-  //   description: post.excerpt,
-  //   image: post.coverImage.url,
-  //   author: {
-  //     "@type": "Person",
-  //     name: post.author.name,
-  //   },
-  //   articleSection: post.category.name,
-  //   datePublished: "2015-09-20",
-  //   dateModified: "2015-09-20",
-  //   publisher: {
-  //     "@type": "Organization",
-  //     name: "Le mec rasoir",
-  //     logo: {
-  //       "@type": "ImageObject",
-  //       url: "https://google.com/logo.jpg",
-  //     },
-  //   },
-  // };
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    name: post.title,
+    description: post.excerpt,
+    image: post.coverImage.url,
+    author: {
+      "@type": "Person",
+      name: post.author.name,
+    },
+    articleSection: post.category.name,
+    datePublished: "2015-09-20",
+    dateModified: "2015-09-20",
+    publisher: {
+      "@type": "Organization",
+      name: "Le mec rasoir",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://google.com/logo.jpg",
+      },
+    },
+  };
 
   return (
     <>
-      {/* <script
+      <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      /> */}
+      />
       <div className="container mx-auto px-5">
         <article className="mx-auto">
-          <div className="text-center mb-10 flex items-center gap-3 justify-center mx-auto ">
+          <div className="text-center mb-10 mt-20 flex items-center gap-3 justify-center mx-auto ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

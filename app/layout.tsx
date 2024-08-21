@@ -1,5 +1,5 @@
-import Header from "@/app/components/Header";
-import { Toaster } from "@/app/components/ui/toaster";
+import Header from "@/components/Header";
+import { Toaster } from "@/components/ui/toaster";
 import { CMS_NAME } from "@/lib/constants";
 import localFont from "next/font/local";
 import React from "react";
@@ -30,25 +30,20 @@ const manrope = localFont({
 
 function Footer() {
   return (
-    <footer className="bg-zinc-950 border-t border-accent-2 mt-40 m-5 rounded-3xl">
-      <div className="container mx-auto">
-        <div className="py-40 flex flex-col lg:flex-row items-center">
-          <h3 className="text-4xl lg:text-5xl font-medium tracking-tighter leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2 text-white">
-            Le mec rasoir
-          </h3>
-          <div className="grid gid-cols-1 sm:grid-cols-2 justify-center items-center lg:pl-4 lg:w-1/2">
-            <div className="grid mx-3  text-white py-3 px-12 lg:px-8 mb-6 lg:mb-0">
-              <p className="mb-2 font-semibold">Read Documentation</p>
-              <a href="#">Avis produit</a>
-              <a href="#">Avis marque</a>
-              <a href="#">tutoriels</a>
-            </div>
-            <div className="grid mx-3  text-white py-3 px-12 lg:px-8 mb-6 lg:mb-0">
-              <p className="mb-2 font-semibold">Read Documentation</p>
-              <a href="#">Avis produit</a>
-              <a href="#">Avis marque</a>
-              <a href="#">tutoriels</a>
-            </div>
+    <footer className="bg-[#001744] border-t border-accent-2 mx-5 mb-5 rounded-xl">
+      <div className="mx-10">
+        <div className="py-6 flex flex-col md:flex-row items-center justify-between text-sm">
+          <div className="text-white">
+            <p>© 2024 All Rights Reserved</p>
+          </div>
+          <div className="text-white">
+            <p>Back to top ↑</p>
+          </div>
+
+          <div className="grid gid-cols-1 text-white justify-end items-center lg:pl-4">
+            <p className="text-right">
+              made with ❤️ by <a href="https://github.com/gbielli">@gbielli</a>
+            </p>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import ProductOverview from "@/app/components/articles/productOverview";
-import Summary from "@/app/components/articles/summary";
-import { Button } from "@/app/components/ui/button";
+import ProductOverview from "@/components/articles/productOverview";
+import Summary from "@/components/articles/summary";
+import { Button } from "@/components/ui/button";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";

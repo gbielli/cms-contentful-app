@@ -16,7 +16,7 @@
     --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 221 60% 98%;
     --secondary-foreground: 223 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -86,6 +86,11 @@ h2,
 h3,
 h4 {
   font-family: var(--font-roundo);
+  color: #001744;
+}
+
+.color {
+  color: #f6f9fe;
 }
 
 body {

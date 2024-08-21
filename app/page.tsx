@@ -1,23 +1,29 @@
+import AllStories from "@/components/all-stories";
+import HeaderCenter from "@/components/homepage/headerCenter";
+import { LastArticles } from "@/components/homepage/lastArticles";
+import Marquee from "@/components/homepage/marquee";
+import Reassurance from "@/components/homepage/reassurance";
 import { draftMode } from "next/headers";
-import { getAllPosts } from "../lib/api";
-import Cat from "./components/cat";
-import Form from "./components/form/form";
-import { CarouselSize } from "./components/homepage/carrouselSize";
-import HeaderDestructive from "./components/homepage/headerDestructive";
-import Reassurance from "./components/homepage/reassurance";
+import { getAllPosts, getCategory } from "../lib/api";
 
 export default async function Page() {
   const { isEnabled } = draftMode();
   const allPosts = await getAllPosts(isEnabled);
-  const morePosts = allPosts.slice(1, 6);
+  const category = await getCategory();
+  const morePosts = allPosts.slice(1, 4);
 
   return (
     <div className="mx-auto">
-      <HeaderDestructive />
+      <HeaderCenter />
+
+      <Marquee />
       <Reassurance />
-      <CarouselSize morePosts={morePosts} />
-      <Form />
-      <Cat />
+
+      <LastArticles morePosts={morePosts} />
+      <h2 className="text-4xl leading-snug text-center font-semibold">
+        Tous nos articles
+      </h2>
+      <AllStories allPosts={allPosts} categoryList={category} />
     </div>
   );
 }
