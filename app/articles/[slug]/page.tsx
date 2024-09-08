@@ -43,7 +43,7 @@ export default async function PostPage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    name: post.title,
+    headline: post.title,
     description: post.excerpt,
     image: post.coverImage.url,
     author: {
@@ -51,11 +51,11 @@ export default async function PostPage({
       name: post.author.name,
     },
     articleSection: post.category.name,
-    datePublished: "2015-09-20",
-    dateModified: "2015-09-20",
+    datePublished: post.sys.firstPublishedAt,
+    dateModified: post.sys.publishedAt,
     publisher: {
       "@type": "Organization",
-      name: "Le mec rasoir",
+      name: "Family Tribes",
       logo: {
         "@type": "ImageObject",
         url: "https://google.com/logo.jpg",

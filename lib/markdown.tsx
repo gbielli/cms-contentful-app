@@ -119,8 +119,9 @@ export async function Markdown({ post }: { post: Content }) {
             // render the entries as needed by looking at the __typename
             // referenced in the GraphQL query
             if (entry.__typename === "Avantages") {
-              return <ProductOverview overview={entry} />;
+              return <ProductOverview key={entry.sys.id} overview={entry} />;
             }
+            return null;
           },
           [INLINES.ENTRY_HYPERLINK]: (node: any, children: any) => {
             return <Button>{children}</Button>;

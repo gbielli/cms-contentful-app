@@ -1,22 +1,21 @@
-import type { Config } from 'tailwindcss'
-import typography from '@tailwindcss/typography'
+import typography from "@tailwindcss/typography";
+import type { Config } from "tailwindcss";
 
 export default {
   content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './lib/**/*.{ts,tsx}',
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
       content: {
-        'summary' : 'url("/summary.svg")',
-        
+        summary: 'url("/summary.svg")',
       },
       fontFamily: {
-        roundo: ['var(--font-roundo)'],
-        manrope: ['var(--font-manrope)'],
-        synonym: ['var(--font-synonym)']
+        roundo: ["var(--font-roundo)"],
+        manrope: ["var(--font-manrope)"],
+        synonym: ["var(--font-synonym)"],
       },
     },
   },
@@ -24,4 +23,4 @@ export default {
     hoverOnlyWhenSupported: true,
   },
   plugins: [typography],
-} satisfies Config
+} satisfies Config;
