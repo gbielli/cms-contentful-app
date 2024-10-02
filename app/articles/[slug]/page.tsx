@@ -1,10 +1,10 @@
 import Affilation from "@/components/affilation";
 import CoverImage from "@/components/cover-image";
 import DateComponent from "@/components/date";
-import MoreStories from "@/components/more-stories";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
 import { draftMode } from "next/headers";
+import MoreStories from "./components/more-stories";
 
 export async function generateStaticParams() {
   const allPosts = await getAllPosts(false);
@@ -151,7 +151,7 @@ export default async function PostPage({
             </div>
           </div>
 
-          <div className="mb-8 md:mb-16 sm:mx-0 ">
+          <div className="mb-8 md:mb-16 mx-auto max-w-5xl">
             <CoverImage
               title={post.title}
               url={post.coverImage.url}

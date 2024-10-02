@@ -3,8 +3,16 @@ import HeaderCenter from "@/components/homepage/headerCenter";
 import { LastArticles } from "@/components/homepage/lastArticles";
 import Marquee from "@/components/homepage/marquee";
 import Reassurance from "@/components/homepage/reassurance";
+import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import { getAllPosts, getCategory } from "../lib/api";
+
+export const metadata: Metadata = {
+  title: "Family Tribes - le blog des jeunes parents",
+  description:
+    "Découvrez nos avis sincères sur des produits pour toute la famille",
+  metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
+};
 
 export default async function Page() {
   const { isEnabled } = draftMode();

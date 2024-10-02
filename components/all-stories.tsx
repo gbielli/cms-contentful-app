@@ -1,99 +1,118 @@
 "use client";
 
 import PostPreview from "@/components/post-preview";
-import { useState } from "react";
+import React, { useState } from "react";
 
-type State = {
-  isHover: boolean;
-  index: number;
-  title: string;
+const ALL_CATEGORIES = "all";
+
+type Category = {
+  name: string;
+  slug: string;
 };
 
-const AllStories = ({
-  allPosts,
-  categoryList,
-}: {
-  allPosts: any[];
-  categoryList: any[];
-}) => {
-  const [isActive, setIsActive] = useState<State>({
-    isHover: true,
-    index: -1,
-    title: "",
-  });
-
-  const handleActiveCategory = (categoryName: string, index: any) => {
-    setIsActive({
-      isHover: true,
-      index: index,
-      title: categoryName.toLowerCase(),
-    });
+type Post = {
+  slug: string;
+  title: string;
+  coverImage: {
+    url: string;
   };
-
-  const filteredpost = (posts: any) => {
-    if (isActive.index != -1) {
-      return posts.filter(
-        (post: any) =>
-          post.category.name.toLowerCase() === isActive.title.toLowerCase()
-      );
-    } else {
-      return posts;
-    }
+  sys: {
+    firstPublishedAt: string;
   };
+  author: {
+    name: string;
+  };
+  excerpt: string;
+  category: Category;
+};
 
-  const handleAllCategoryClick = () => {
-    setIsActive({ isHover: true, index: -1, title: "Tous" });
+type AllStoriesProps = {
+  allPosts: Post[];
+  categoryList: Category[];
+};
+
+const AllStories: React.FC<AllStoriesProps> = ({ allPosts, categoryList }) => {
+  const [activeCategory, setActiveCategory] = useState<string>(ALL_CATEGORIES);
+
+  const availableCategories = categoryList.filter((category) =>
+    allPosts.some(
+      (post) => post.category.name.toLowerCase() === category.name.toLowerCase()
+    )
+  );
+
+  const filteredPosts =
+    activeCategory === ALL_CATEGORIES
+      ? allPosts
+      : allPosts.filter(
+          (post) =>
+            post.category.name.toLowerCase() === activeCategory.toLowerCase()
+        );
+
+  const handleCategoryClick = (categoryName: string) => {
+    setActiveCategory(categoryName.toLowerCase());
   };
 
   return (
     <div className="container mb-10">
-      <div className="flex gap-3 pt-5 pb-10 justify-center border-b border-b-slate-300 ">
-        <button
-          onClick={handleAllCategoryClick}
-          className={`${
-            isActive.isHover && isActive.index === -1
-              ? "bg-primary border-primary text-white"
-              : ""
-          } flex gap-3 border border-black px-10 py-4 rounded-full items-center`}
-        >
-          <span>Tous</span>
-        </button>
-
-        {categoryList.map((category, index) => {
-          return (
-            <button
-              onClick={() => handleActiveCategory(category.name, index)}
-              key={index}
-              className={`${
-                isActive.isHover && isActive.index == index
-                  ? "bg-primary border-primary text-white "
-                  : ""
-              } flex gap-3 border border-black  px-10 py-4 rounded-full items-center`}
-            >
-              {category.name}
-            </button>
-          );
-        })}
+      <div className="flex flex-wrap gap-3 pt-5 pb-10 justify-center border-b border-b-slate-300">
+        <CategoryButton
+          name="Tous"
+          key="all-category"
+          isActive={activeCategory === ALL_CATEGORIES}
+          onClick={() => handleCategoryClick(ALL_CATEGORIES)}
+        />
+        {availableCategories.map((category) => (
+          <CategoryButton
+            key={category.slug}
+            name={category.name}
+            isActive={activeCategory === category.name.toLowerCase()}
+            onClick={() => handleCategoryClick(category.name)}
+          />
+        ))}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
-        {filteredpost(allPosts).map((post: any) => {
-          return (
-            <PostPreview
-              key={post.slug}
-              title={post.title}
-              coverImage={post.coverImage}
-              date={post.sys.firstPublishedAt}
-              author={post.author}
-              slug={post.slug}
-              excerpt={post.excerpt}
-              category={post.category}
-            />
-          );
-        })}
+        {filteredPosts.map((post) => (
+          <PostPreview
+            key={post.slug}
+            title={post.title}
+            coverImage={post.coverImage}
+            date={post.sys.firstPublishedAt}
+            author={post.author}
+            slug={post.slug}
+            excerpt={post.excerpt}
+            category={post.category}
+          />
+        ))}
       </div>
     </div>
   );
 };
+
+type CategoryButtonProps = {
+  name: string;
+  isActive: boolean;
+  onClick: () => void;
+};
+
+const CategoryButton: React.FC<CategoryButtonProps> = ({
+  name,
+  isActive,
+  onClick,
+}) => (
+  <button
+    onClick={onClick}
+    className={`
+      flex gap-3 border px-10 py-4 rounded-full items-center transition-colors
+      ${
+        isActive
+          ? "bg-primary border-primary text-white"
+          : "border-black hover:bg-gray-100"
+      }
+    `}
+  >
+    {name}
+  </button>
+);
 
 export default AllStories;

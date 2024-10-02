@@ -26,7 +26,7 @@ export default function CoverImage({
       priority
       width={width}
       height={height}
-      className={cn("shadow-small mx-auto", {
+      className={cn("shadow-small mx-auto object-cover w-full h-full", {
         "hover:shadow-medium transition-shadow duration-200": slug,
       })}
       src={url}
@@ -34,7 +34,7 @@ export default function CoverImage({
   );
 
   return (
-    <div className="sm:mx-0">
+    <div className="sm:mx-0 aspect-video">
       {slug ? (
         <Link href={`/articles/${slug}`} aria-label={title}>
           {image}

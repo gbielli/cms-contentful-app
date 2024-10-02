@@ -1,4 +1,3 @@
-import CoverImage from "@/components/cover-image";
 import Negative from "@/public/images/negative.svg";
 import Positive from "@/public/images/positive.svg";
 import Image from "next/image";
@@ -84,14 +83,17 @@ export default function ProductOverview({ overview }: overviewProps) {
       <div className="mb-10 ">
         <div className="max-w-3xl mx-auto bg-slate-100 pb-10 rounded-2xl border border-slate-300 ">
           <div className="bg-white rounded-2xl py-6">
-            {overview.productImage && (
-              <CoverImage
-                url={overview.productImage.url}
-                width={400}
-                height={400}
-                title="poussette yoyo"
-              />
-            )}
+            <div className="max-w-72 mx-auto">
+              {overview.productImage && (
+                <Image
+                  className="object-cover w-full "
+                  src={overview.productImage.url}
+                  alt="poussette yoyo"
+                  width={400}
+                  height={400}
+                />
+              )}
+            </div>
           </div>
           <div className="p-8 bg-slate-100">
             <h3 className="text-2xl font-medium font-roundo mb-4">

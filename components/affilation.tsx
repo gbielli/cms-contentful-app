@@ -12,7 +12,6 @@ const Affilation = (post: any) => {
           <p className="text-blue-500">
             🙏 En passant par ces liens, vous soutenez directement mon contenu
           </p>
-          <p>hello </p>
         </div>
       </div>
       <div className="affilate max-w-3xl mx-auto">
