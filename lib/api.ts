@@ -162,6 +162,7 @@ export async function getEntryById(id: string): Promise<any> {
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
   try {
+    console.log("Fetching posts from Contentful...");
     const entries = await fetchGraphQL(
       `query {
         postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
@@ -174,9 +175,24 @@ export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
       }`,
       isDraftMode
     );
-    return extractPostEntries(entries);
+
+    console.log("Response from Contentful:", JSON.stringify(entries, null, 2));
+
+    if (
+      !entries ||
+      !entries.data ||
+      !entries.data.postCollection ||
+      !Array.isArray(entries.data.postCollection.items)
+    ) {
+      console.error("Invalid response structure from Contentful");
+      return [];
+    }
+
+    const posts = entries.data.postCollection.items;
+    console.log(`Fetched ${posts.length} posts from Contentful`);
+    return posts;
   } catch (error) {
-    console.error("Error fetching posts:", error);
+    console.error("Error fetching posts from Contentful:", error);
     return [];
   }
 }
