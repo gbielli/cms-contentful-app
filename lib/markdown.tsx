@@ -33,9 +33,6 @@ interface Content {
       name: string;
       price: number;
       url: string;
-      icon: {
-        url: string;
-      };
     };
   };
   content: {

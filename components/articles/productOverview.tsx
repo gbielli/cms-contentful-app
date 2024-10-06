@@ -1,8 +1,6 @@
 import Negative from "@/public/images/negative.svg";
 import Positive from "@/public/images/positive.svg";
 import Image from "next/image";
-import Link from "next/link";
-import { Button } from "../ui/button";
 
 type overviewProps = {
   overview: {
@@ -17,9 +15,6 @@ type overviewProps = {
       name: string;
       price: number;
       url: string;
-      icon: {
-        url: string;
-      };
     };
   };
 };
@@ -103,7 +98,7 @@ export default function ProductOverview({ overview }: overviewProps) {
               <Stars number={overview.stars} total={5} />
               <p> {overview.stars} / 5 </p>
             </div>
-            <div className="flex items-center w-full justify-between mb-3 pb-4 border-b">
+            {/* <div className="flex items-center w-full justify-between mb-3 pb-4 border-b">
               <div className="left flex h-6 items-center gap-3">
                 {overview.vendor.icon?.url && (
                   <Image
@@ -124,7 +119,7 @@ export default function ProductOverview({ overview }: overviewProps) {
                   </Link>
                 </Button>
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
             <div className="">
