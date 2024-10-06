@@ -7,11 +7,21 @@ import { draftMode } from "next/headers";
 import MoreStories from "./components/more-stories";
 
 export async function generateStaticParams() {
-  const allPosts = await getAllPosts(false);
+  try {
+    const allPosts = await getAllPosts(false);
 
-  return allPosts.map((post) => ({
-    slug: post.slug,
-  }));
+    if (!allPosts || !Array.isArray(allPosts)) {
+      console.error("getAllPosts did not return an array:", allPosts);
+      return [];
+    }
+
+    return allPosts.map((post) => ({
+      slug: post.slug,
+    }));
+  } catch (error) {
+    console.error("Error in generateStaticParams:", error);
+    return [];
+  }
 }
 
 export async function generateMetadata({
