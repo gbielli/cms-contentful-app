@@ -8,8 +8,7 @@ import MoreStories from "./components/more-stories";
 
 export async function generateStaticParams() {
   try {
-    const { isEnabled } = draftMode();
-    const allPosts = await getAllPosts(isEnabled);
+    const allPosts = await getAllPosts(false);
 
     if (!allPosts || !Array.isArray(allPosts)) {
       console.error("getAllPosts did not return an array:", allPosts);
@@ -31,7 +30,7 @@ export async function generateMetadata({
   params: { slug: string };
 }) {
   const { isEnabled } = draftMode();
-  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+  const { post } = await getPostAndMorePosts(params.slug, isEnabled);
 
   return {
     metadataBase: new URL("http://localhost:3000/articles"),
