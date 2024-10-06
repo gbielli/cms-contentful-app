@@ -117,7 +117,6 @@ export async function getCategory(): Promise<any> {
 
 export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
   try {
-    console.log("Fetching posts from Contentful...");
     const entries = await fetchGraphQL(
       `query {
         postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
@@ -130,8 +129,6 @@ export async function getAllPosts(isDraftMode: boolean): Promise<any[]> {
       }`,
       isDraftMode
     );
-
-    console.log("Response from Contentful:", JSON.stringify(entries, null, 2));
 
     if (
       !entries ||
