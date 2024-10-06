@@ -1,9 +1,21 @@
 import Negative from "@/public/images/negative.svg";
 import Positive from "@/public/images/positive.svg";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 type overviewProps = {
   overview: {
+    listVendorsCollection?: {
+      items: {
+        name: string;
+        price: number;
+        url: string;
+        icon?: {
+          url?: string;
+        };
+      }[];
+    };
     title: string;
     productImage: {
       url: string;
@@ -11,11 +23,6 @@ type overviewProps = {
     stars: number;
     like: string[];
     dislike: string[];
-    vendor: {
-      name: string;
-      price: number;
-      url: string;
-    };
   };
 };
 
@@ -73,6 +80,7 @@ const Stars = ({ number, total }: { number: number; total: number }) => {
 };
 
 export default function ProductOverview({ overview }: overviewProps) {
+  const listVendors = overview.listVendorsCollection?.items;
   return (
     <div>
       <div className="mb-10 ">
@@ -98,70 +106,78 @@ export default function ProductOverview({ overview }: overviewProps) {
               <Stars number={overview.stars} total={5} />
               <p> {overview.stars} / 5 </p>
             </div>
-            {/* <div className="flex items-center w-full justify-between mb-3 pb-4 border-b">
-              <div className="left flex h-6 items-center gap-3">
-                {overview.vendor.icon?.url && (
-                  <Image
-                    className="object-cover w-full h-full"
-                    src={overview.vendor.icon.url}
-                    alt="vendor logo"
-                    width={32}
-                    height={32}
-                  />
-                )}
-                <p className="text-lg">{overview.vendor.name}</p>
-              </div>
-              <div className="right flex gap-10 items-center">
-                <p className="text-lg">{overview.vendor.price}€</p>
-                <Button className="px-7" asChild>
-                  <Link href={`${overview.vendor.url && overview.vendor.url}`}>
-                    Voir l'offre
-                  </Link>
-                </Button>
-              </div>
-            </div> */}
-          </div>
-          <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
-            <div className="">
-              <h3 className="font-medium text-xl">Les plus du produit</h3>
-              <div className="flex flex-col gap-2 mt-3">
-                {overview.like.map((item, index) => {
-                  return (
-                    <div
-                      className="flex gap-2 mb-2"
-                      key={`like_${item}_${index}`}
-                    >
+
+            {listVendors?.map((vendor, index) => {
+              return (
+                <div
+                  key={`${vendor.name}_${index}`}
+                  className="flex items-center w-full justify-between mb-3 pb-4 border-b"
+                >
+                  <div className="left flex h-6 items-center gap-3">
+                    {vendor.icon?.url && (
                       <Image
-                        src={Positive}
-                        alt="point positif"
-                        width={24}
-                        className="text-blue-500 "
+                        className="object-cover w-full h-full"
+                        src={vendor.icon?.url}
+                        alt="vendor logo"
+                        width={32}
+                        height={32}
                       />
-                      <p className=" text-slate-700">{item}</p>
-                    </div>
-                  );
-                })}
+                    )}
+                    <p className="text-lg">{vendor.name}</p>
+                  </div>
+                  <div className="right flex gap-10 items-center">
+                    <p className="text-lg">{vendor.price}€</p>
+                    <Button className="px-7" asChild>
+                      <Link href={`${vendor.url && vendor.url}`}>
+                        Voir l'offre
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              );
+            })}
+            <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
+              <div className="">
+                <h3 className="font-medium text-xl">Les plus du produit</h3>
+                <div className="flex flex-col gap-2 mt-3">
+                  {overview.like.map((item, index) => {
+                    return (
+                      <div
+                        className="flex gap-2 mb-2"
+                        key={`like_${item}_${index}`}
+                      >
+                        <Image
+                          src={Positive}
+                          alt="point positif"
+                          width={24}
+                          className="text-blue-500 "
+                        />
+                        <p className=" text-slate-700">{item}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            <div className="">
-              <h3 className="font-medium text-xl">Les moins du produit</h3>
-              <div className="flex flex-col gap-2 mt-3">
-                {overview.dislike.map((item, index) => {
-                  return (
-                    <div
-                      className="flex gap-2 mb-2"
-                      key={`dislike_${item}_${index}`}
-                    >
-                      <Image
-                        src={Negative}
-                        alt="point positif"
-                        width={24}
-                        className="text-blue-500 "
-                      />
-                      <p className="text-slate-700">{item}</p>
-                    </div>
-                  );
-                })}
+              <div className="">
+                <h3 className="font-medium text-xl">Les moins du produit</h3>
+                <div className="flex flex-col gap-2 mt-3">
+                  {overview.dislike.map((item, index) => {
+                    return (
+                      <div
+                        className="flex gap-2 mb-2"
+                        key={`dislike_${item}_${index}`}
+                      >
+                        <Image
+                          src={Negative}
+                          alt="point positif"
+                          width={24}
+                          className="text-blue-500 "
+                        />
+                        <p className="text-slate-700">{item}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

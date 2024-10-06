@@ -35,6 +35,16 @@ const POST_GRAPHQL_FIELDS = `
           productImage {
             url
             } 
+              listVendorsCollection(limit:3) {
+                items {
+                name
+                price
+                url
+                icon {
+                  url
+              }
+                }
+              }
         }
         }
 				}
@@ -42,22 +52,6 @@ const POST_GRAPHQL_FIELDS = `
   }
   
 `;
-
-// export async function getVendors(isDraftMode: boolean): Promise<any[]> {
-//   const entries = await fetchGraphQL(
-//     `query {
-//       postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
-//         isDraftMode ? "true" : "false"
-//       }) {
-//         items {
-//           ${POST_GRAPHQL_VENDOR}
-//         }
-//       }
-//     }`,
-//     isDraftMode
-//   );
-//   return extractPostEntries(entries);
-// }
 
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
