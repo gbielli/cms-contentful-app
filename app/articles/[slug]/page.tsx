@@ -8,7 +8,7 @@ import MoreStories from "./components/more-stories";
 
 export async function generateStaticParams() {
   try {
-    const allPosts = await getAllPosts(false);
+    const allPosts = await getAllPosts(true);
 
     if (!allPosts || !Array.isArray(allPosts)) {
       console.error("getAllPosts did not return an array:", allPosts);
