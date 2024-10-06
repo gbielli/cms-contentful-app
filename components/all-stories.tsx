@@ -63,7 +63,7 @@ const AllStories: React.FC<AllStoriesProps> = ({ allPosts, categoryList }) => {
         />
         {availableCategories.map((category) => (
           <CategoryButton
-            key={category.slug}
+            key={`category-${category.name}`}
             name={category.name}
             isActive={activeCategory === category.name.toLowerCase()}
             onClick={() => handleCategoryClick(category.name)}
@@ -74,7 +74,7 @@ const AllStories: React.FC<AllStoriesProps> = ({ allPosts, categoryList }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
         {filteredPosts.map((post) => (
           <PostPreview
-            key={post.slug}
+            key={`post-${post.slug}`}
             title={post.title}
             coverImage={post.coverImage}
             date={post.sys.firstPublishedAt}
