@@ -35,12 +35,6 @@ const POST_GRAPHQL_FIELDS = `
           productImage {
             url
             } 
-            vendor {
-            name
-            icon {
-            url}
-            }
-            
         }
         }
 				}
