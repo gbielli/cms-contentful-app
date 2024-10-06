@@ -112,10 +112,7 @@ export async function Markdown({ post }: { post: Content }) {
           [BLOCKS.EMBEDDED_ENTRY]: (node, children) => {
             // find the entry in the entryMap by ID
             const entry = entryMap.get(node.data.target.sys.id);
-            console.log(entry);
 
-            // render the entries as needed by looking at the __typename
-            // referenced in the GraphQL query
             if (entry.__typename === "Avantages") {
               return <ProductOverview key={entry.sys.id} overview={entry} />;
             }

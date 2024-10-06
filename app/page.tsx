@@ -5,7 +5,7 @@ import Marquee from "@/components/homepage/marquee";
 import Reassurance from "@/components/homepage/reassurance";
 import { Metadata } from "next";
 import { draftMode } from "next/headers";
-import { getAllPosts, getCategory } from "../lib/api";
+import { getCategory, getHomepagePosts } from "../lib/api";
 
 export const metadata: Metadata = {
   title: "Family Tribes - le blog des jeunes parents",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
   const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled);
+  const allPosts = await getHomepagePosts(isEnabled);
   const category = await getCategory();
   const morePosts = allPosts.slice(1, 4);
 

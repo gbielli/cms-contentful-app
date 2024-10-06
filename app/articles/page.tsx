@@ -1,11 +1,10 @@
 import AllStories from "@/components/all-stories";
-import { getAllPosts, getCategory } from "@/lib/api";
+import { getCategory, getHomepagePosts } from "@/lib/api";
 import { draftMode } from "next/headers";
 
 const Page = async () => {
   const { isEnabled } = draftMode();
-  const allPosts = await getAllPosts(isEnabled);
-
+  const allPosts = await getHomepagePosts(isEnabled);
   const category = await getCategory();
   return (
     <div>

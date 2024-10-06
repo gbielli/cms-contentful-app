@@ -53,6 +53,70 @@ const POST_GRAPHQL_FIELDS = `
   
 `;
 
+const HOMEPAGE_GRAPHQL_FIELDS = `
+  slug
+  title
+  sys {
+    publishedAt
+    firstPublishedAt
+  }
+  coverImage {
+    url
+  }
+  date
+  author {
+    name
+  }
+  category {
+    name
+    slug
+  }
+  excerpt
+  content {
+    links {
+      entries {
+				block {
+					sys {
+						id}
+        }
+				}
+    }
+  }`;
+
+export async function getHomepagePosts(isDraftMode: boolean): Promise<any[]> {
+  try {
+    const entries = await fetchGraphQL(
+      `query {
+          postCollection(where: { slug_exists: true }, order: date_DESC, preview: ${
+            isDraftMode ? "true" : "false"
+          }) {
+            items {
+              ${HOMEPAGE_GRAPHQL_FIELDS}
+            }
+          }
+        }`,
+      isDraftMode
+    );
+
+    if (
+      !entries ||
+      !entries.data ||
+      !entries.data.postCollection ||
+      !Array.isArray(entries.data.postCollection.items)
+    ) {
+      console.error("Invalid response structure from Contentful");
+      return [];
+    }
+
+    const posts = entries.data.postCollection.items;
+    console.log(`Fetched ${posts.length} posts from Contentful`);
+    return posts;
+  } catch (error) {
+    console.error("Error fetching posts from Contentful:", error);
+    return [];
+  }
+}
+
 async function fetchGraphQL(query: string, preview = false): Promise<any> {
   return fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
