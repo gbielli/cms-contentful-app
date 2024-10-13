@@ -19,7 +19,9 @@ export default function index() {
                 exit="exit"
                 className="relative w-fit block after:block after:content-[''] after:absolute after:h-[1px] after:rounded-full after:bg-black after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-left"
               >
-                <a href={href}>{title}</a>
+                <a className="" href={href}>
+                  {title}
+                </a>
               </motion.div>
             </div>
           );

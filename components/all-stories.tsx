@@ -54,7 +54,7 @@ const AllStories: React.FC<AllStoriesProps> = ({ allPosts, categoryList }) => {
 
   return (
     <div className="container mb-10">
-      <div className="flex flex-wrap gap-3 pt-5 pb-10 justify-center border-b border-b-slate-300">
+      <div className="flex flex-wrap gap-3 pt-5 pb-10 justify-center ">
         <CategoryButton
           name="Tous"
           key="all-category"

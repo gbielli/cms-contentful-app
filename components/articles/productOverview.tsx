@@ -84,7 +84,7 @@ export default function ProductOverview({ overview }: overviewProps) {
   return (
     <div>
       <div className="mb-10 ">
-        <div className="max-w-3xl mx-auto bg-slate-100 pb-10 rounded-2xl border border-slate-300 ">
+        <div className="max-w-3xl mx-auto bg-slate-100 rounded-2xl border border-slate-300 ">
           <div className="bg-white rounded-2xl py-6">
             <div className="max-w-72 mx-auto">
               {overview.productImage && (
@@ -136,7 +136,7 @@ export default function ProductOverview({ overview }: overviewProps) {
                 </div>
               );
             })}
-            <div className="grid px-10 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
+            <div className="grid px-10 pt-5 grid-cols-1 gap-5 sm:grid-cols-2 bg-slate-100">
               <div className="">
                 <h3 className="font-medium text-xl">Les plus du produit</h3>
                 <div className="flex flex-col gap-2 mt-3">

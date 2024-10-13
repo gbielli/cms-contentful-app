@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Family Tribes - le blog des jeunes parents",
   description:
     "Découvrez nos avis sincères sur des produits pour toute la famille",
-  metadataBase: new URL("https://next-learn-dashboard.vercel.sh"),
 };
 
 export default async function Page() {

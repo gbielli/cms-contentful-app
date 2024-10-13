@@ -39,6 +39,9 @@ export async function generateMetadata({
     alternates: {
       canonical: `/${post.slug}`,
     },
+    openGraph: {
+      images: post.coverImage.url,
+    },
   };
 }
 
@@ -68,7 +71,7 @@ export default async function PostPage({
       name: "Family Tribes",
       logo: {
         "@type": "ImageObject",
-        url: "https://google.com/logo.jpg",
+        url: "replacethisurl/logo.jpg",
       },
     },
   };
@@ -161,7 +164,7 @@ export default async function PostPage({
             </div>
           </div>
 
-          <div className="mb-8 md:mb-16 mx-auto max-w-5xl">
+          <div className="mb-8 md:mb-16 mx-auto max-w-4xl">
             <CoverImage
               title={post.title}
               url={post.coverImage.url}
