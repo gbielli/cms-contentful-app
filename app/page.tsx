@@ -8,7 +8,7 @@ import { draftMode } from "next/headers";
 import { getCategory, getHomepagePosts } from "../lib/api";
 
 export const metadata: Metadata = {
-  title: "Family Tribes - le blog des jeunes parents",
+  title: "Family Tribe - le blog des jeunes parents",
   description:
     "Découvrez nos avis sincères sur des produits pour toute la famille",
 };

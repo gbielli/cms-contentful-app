@@ -1,4 +1,3 @@
-import Affilation from "@/components/affilation";
 import CoverImage from "@/components/cover-image";
 import DateComponent from "@/components/date";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
@@ -68,7 +67,7 @@ export default async function PostPage({
     dateModified: post.sys.publishedAt,
     publisher: {
       "@type": "Organization",
-      name: "Family Tribes",
+      name: "Family Tribe",
       logo: {
         "@type": "ImageObject",
         url: "replacethisurl/logo.jpg",
@@ -180,8 +179,6 @@ export default async function PostPage({
               <Markdown post={post} />
             </div>
           </div>
-
-          <Affilation post={post} />
         </article>
         <hr className="border-accent-2 my-10" />
         <MoreStories morePosts={morePosts} asLink={false} />

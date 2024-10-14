@@ -1,13 +1,13 @@
 import ProductOverview from "@/components/articles/productOverview";
 import Summary from "@/components/articles/summary";
 import { Button } from "@/components/ui/button";
+import { VendorsList } from "@/components/vendorsList";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "./utils";
 import "/lib/markdown.css";
-
 interface Asset {
   sys: {
     id: string;
@@ -59,6 +59,7 @@ function RichTextAsset({
 
 export async function Markdown({ post }: { post: Content }) {
   const links = post.content.links;
+  const listVendors = links.entries.block[0]?.listVendorsCollection.items;
 
   const entryMap = new Map();
 
@@ -69,7 +70,6 @@ export async function Markdown({ post }: { post: Content }) {
   return (
     <div>
       <Summary post={post.content.json.content} />
-
       {documentToReactComponents(post.content.json, {
         renderNode: {
           [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
@@ -123,6 +123,8 @@ export async function Markdown({ post }: { post: Content }) {
           },
         },
       })}
+
+      {listVendors && <VendorsList vendors={listVendors} />}
     </div>
   );
 }

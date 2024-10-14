@@ -39,7 +39,7 @@ export default function Index() {
             href="/"
             className="text-2xl font-roundo font-medium md:pr-8 py-10"
           >
-            Family Tribes
+            Family Tribe
           </a>
         </div>
       </div>

@@ -9,7 +9,7 @@ const Page = async () => {
   return (
     <div>
       <div className="py-10">
-        <h1 className="text-7xl font-roundo font-semibold text-center line-clamp-3 max-w-4xl mx-auto">
+        <h1 className="sm:text-7xl text-[#001744] text-center text-balance md:text-6xl font-medium mb-8 md:mb-4">
           Nos articles pour jeunes parents.
         </h1>
         <p className="text-center text-xl mt-4 max-w-3xl mx-auto">
