@@ -51,7 +51,7 @@ export const VendorsList: React.FC<{ vendors: Vendor[] }> = ({ vendors }) => {
               <p className="text-lg font-medium">{vendor.name}</p>
             </div>
             <div className="right flex gap-6 items-center">
-              <p className="text-lg font-bold">{vendor.price}€</p>
+              <p className="text-lg font-medium">{vendor.price}€</p>
               <Button className="px-7" asChild>
                 <Link href={vendor.url}>Voir l'offre</Link>
               </Button>

@@ -15,7 +15,7 @@ export function LastArticles({ morePosts }: { morePosts: any[] }) {
   const firstPost = morePosts[0];
   return (
     <section className="container pt-20 bg-secondary pb-20 mb-20">
-      <div className="text-4xl text-[#001744] leading-snug font-bold">
+      <div className="text-4xl text-[#001744] leading-snug font-medium">
         Nos derniers articles
       </div>
       <Carousel

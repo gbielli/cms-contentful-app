@@ -27,7 +27,7 @@ export default async function Page() {
       <Reassurance />
 
       <LastArticles morePosts={morePosts} />
-      <h2 className="text-4xl leading-snug text-center font-semibold">
+      <h2 className="text-4xl leading-snug text-center font-medium">
         Tous nos articles
       </h2>
       <AllStories allPosts={allPosts} categoryList={category} />
