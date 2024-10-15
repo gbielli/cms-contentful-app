@@ -34,11 +34,8 @@ export default function Index() {
   return (
     <section className="bg-white">
       <div className="container flex justify-between">
-        <div className="flex gap-2 items-center w-full">
-          <a
-            href="/"
-            className="text-2xl font-roundo font-medium md:pr-8 py-10"
-          >
+        <div className="flex gap-2 items-center w-full pt-10 pb-10">
+          <a href="/" className="text-2xl font-roundo font-medium md:pr-8">
             Family Tribe
           </a>
         </div>
