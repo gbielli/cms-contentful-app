@@ -18,7 +18,8 @@
   top: 20px;
   z-index: 1;
   .menu {
-    width: 480px;
+    max-width: 480px;
+    width: 95vw;
     height: 650px;
     background-color: #f5f7fc;
     border-radius: 25px;

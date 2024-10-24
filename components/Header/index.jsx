@@ -7,7 +7,8 @@ import styles from "./style.module.scss";
 
 const menu = {
   open: {
-    width: "480px",
+    maxWidth: "480px",
+    width: "95vw",
     height: "auto",
     top: "-10px",
     right: "-15px",
