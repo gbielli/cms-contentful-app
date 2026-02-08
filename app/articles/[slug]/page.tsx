@@ -2,6 +2,7 @@ import CoverImage from "@/components/cover-image";
 import DateComponent from "@/components/date";
 import { getAllPosts, getPostAndMorePosts } from "@/lib/api";
 import { Markdown } from "@/lib/markdown";
+import { Metadata } from "next";
 import { draftMode } from "next/headers";
 import MoreStories from "./components/more-stories";
 
@@ -30,10 +31,11 @@ export async function generateStaticParams(): Promise<StaticParam[]> {
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}) {
-  const { isEnabled } = draftMode();
-  const { post } = await getPostAndMorePosts(params.slug, isEnabled);
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const { isEnabled } = await draftMode();
+  const { post } = await getPostAndMorePosts(slug, isEnabled);
 
   return {
     metadataBase: new URL("http://localhost:3000/articles"),
@@ -56,7 +58,7 @@ type PostPageProps = {
 };
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
 
   const jsonLd = {
