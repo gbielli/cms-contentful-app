@@ -5,7 +5,11 @@ import { Markdown } from "@/lib/markdown";
 import { draftMode } from "next/headers";
 import MoreStories from "./components/more-stories";
 
-export async function generateStaticParams() {
+type StaticParam = {
+  slug: string;
+};
+
+export async function generateStaticParams(): Promise<StaticParam[]> {
   try {
     const allPosts = await getAllPosts(false);
 
@@ -44,11 +48,14 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
+type PostPageProps = {
+  params: {
+    slug: string;
+  };
+  searchParams?: Record<string, string | string[] | undefined>;
+};
+
+export default async function PostPage({ params }: PostPageProps) {
   const { isEnabled } = draftMode();
   const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
 

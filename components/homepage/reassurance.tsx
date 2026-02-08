@@ -1,10 +1,8 @@
-import SimpleHubspotLoader from "@/components/SimpleHubspotLoader";
 import { CheckCircle2 } from "lucide-react";
 
 const reassurance = () => {
   return (
     <section className="bg-white mb-20">
-      <SimpleHubspotLoader />
       <div className="container grid grid-cols-2 md:grid-cols-4 gap-10 lg:gap-20 ">
         <div className="flex items-center justify-center my-3 py-5 rounded-lg px-2 gap-2 ">
           <CheckCircle2
