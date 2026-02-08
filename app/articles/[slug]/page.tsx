@@ -51,15 +51,14 @@ export async function generateMetadata({
 }
 
 type PostPageProps = {
-  params: {
-    slug: string;
-  };
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 };
 
 export default async function PostPage({ params }: PostPageProps) {
+  const { slug } = await params;
   const { isEnabled } = await draftMode();
-  const { post, morePosts } = await getPostAndMorePosts(params.slug, isEnabled);
+  const { post, morePosts } = await getPostAndMorePosts(slug, isEnabled);
 
   const jsonLd = {
     "@context": "https://schema.org",

@@ -5,7 +5,7 @@ import { getHomepagePosts } from "../lib/api";
 const baseUrl = "http://familytribe.fr";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const allPosts = await getHomepagePosts(isEnabled);
 
   const postEntries = allPosts.map((post) => ({

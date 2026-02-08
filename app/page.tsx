@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const allPosts = await getHomepagePosts(isEnabled);
   const category = await getCategory();
   const morePosts = allPosts.slice(1, 4);

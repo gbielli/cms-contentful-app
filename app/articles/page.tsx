@@ -3,7 +3,7 @@ import { getCategory, getHomepagePosts } from "@/lib/api";
 import { draftMode } from "next/headers";
 
 const Page = async () => {
-  const { isEnabled } = draftMode();
+  const { isEnabled } = await draftMode();
   const allPosts = await getHomepagePosts(isEnabled);
   const category = await getCategory();
   return (

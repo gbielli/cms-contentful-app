@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getPreviewPostBySlug } from "../../../lib/api";
 
 export async function GET(request: Request) {
+  const draft = await draftMode();
   const { searchParams } = new URL(request.url);
   const secret = searchParams.get("secret");
   const slug = searchParams.get("slug");
@@ -17,6 +18,6 @@ export async function GET(request: Request) {
     return new Response("Invalid slug", { status: 401 });
   }
 
-  draftMode().enable();
+  draft.enable();
   redirect(`/articles/${post.slug}`);
 }
