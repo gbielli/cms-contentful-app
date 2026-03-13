@@ -7,7 +7,7 @@ import { BLOCKS, INLINES } from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
 import { slugify } from "./utils";
-import "/lib/markdown.css";
+
 interface Asset {
   sys: {
     id: string;

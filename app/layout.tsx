@@ -63,7 +63,7 @@ export default function RootLayout({
       className={`${roundo.variable} ${manrope.variable} scroll-smooth`}
     >
       <body className="bg-white">
-        <Script
+        {/* <Script
           id="piwik-pro-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
@@ -71,9 +71,21 @@ export default function RootLayout({
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://tss.familytribe.fr/yzsnjsswoaaea9i.js?awl='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-MSRMPCVF');
+            '='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dathttps://tss.familytribe.fr/yzsnjsswoaaea9i.js?awlaLayer','GTM-MSRMPCVF');
             `,
+          }}
+        /> */}
+
+        <Script
+          id="google-tag-manager-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://tss.familytribe.fr/yzsnjsswoaaea9i.js?awl='+i.replace(/^GTM-/, '')+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MSRMPCVF');`,
           }}
         />
         <Header />

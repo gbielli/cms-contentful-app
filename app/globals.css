@@ -66,12 +66,15 @@
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
   }
-  body {
-    @apply bg-background text-foreground;
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
   }
 }
 
